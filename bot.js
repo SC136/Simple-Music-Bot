@@ -25,7 +25,9 @@ bot.on('message', (msg) => {
     else if  (commandName === 'stop')
       return stop(msg, args);
     else if  (commandName === 'help')
-      return help(msg, args); 
+      return help(msg, args);
+    else if  (commandName === 'ping')
+      return ping(msg, args);
 });
 
 function getCommandName(prefix, content) {
