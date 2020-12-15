@@ -48,7 +48,7 @@ async function help(msg) {
 }
 
 async function ping(msg) {
-  await msg.channel.send(`🏓Latency is ${Date.now() - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
+  await msg.reply(`🏓Latency is ${Date.now() - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
 }
 
 module.exports.play = play;
