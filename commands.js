@@ -45,7 +45,11 @@ async function stop(msg) {
 async function help(msg) {
   await msg.reply('***Help Command*** \n\n`.play <songname>` \n\n`.stop` \n\nSo Simple! \n\n*If You Need Any Help Join The Support Server* : https://discord.gg/Qysc2PXp5e');
 }
+async function ping(msg) {
+    await msg.channel.send('Pong!')
+}
 
 module.exports.play = play;
 module.exports.stop = stop;
 module.exports.help = help;
+module.exports.ping = ping;
