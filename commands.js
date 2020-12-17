@@ -42,7 +42,6 @@ async function stop(msg) {
 
   await msg.reply('Stopped.');
 }
-
 async function help(msg) {
   await msg.reply('***Help Command*** \n\n`.play <songname>` \n\n`.stop` \n\nSo Simple! \n\n*If You Need Any Help Join The Support Server* : https://discord.gg/Qysc2PXp5e');
 }
