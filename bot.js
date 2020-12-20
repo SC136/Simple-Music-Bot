@@ -6,7 +6,7 @@ const bot = new Client();
 bot.login('NzgwODM4NzA4NjY0NDY3NDU2.X706tw.ffi28PFilfRlL-vu1XyFQt1ZzOw');
 
 bot.on('ready', () => {
-  console.log('Bot has logged in and is ready !');
+  console.log('Bot has logged in and is playing music!');
   bot.user.setActivity("Simplicity | Type .help", { type: "LISTENING" });
 
 });
