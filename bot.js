@@ -1,5 +1,5 @@
 const { Client } = require('discord.js');
-const { play, stop, help, ping, server} = require('./commands');
+const { play, stop, help, ping, server, servers, users} = require('./commands');
 
 const bot = new Client();
 
@@ -30,6 +30,10 @@ bot.on('message', (msg) => {
       return ping(msg, args);
     else if  (commandName === 'server')
       return server(msg, args);
+    else if  (commandName === 'servers')
+      return servers(msg, args);
+    else if (commandName === 'users')
+      return users(msg, args);
 });
 
 function getCommandName(prefix, content) {
