@@ -7,7 +7,7 @@ bot.login('NzgwODM4NzA4NjY0NDY3NDU2.X706tw.ffi28PFilfRlL-vu1XyFQt1ZzOw');
 
 bot.on('ready', () => {
   console.log('Bot Has Logged in And Is Playing Music!');
-  bot.user.setActivity("Simplicity | Type .help", { type: "LISTENING" });
+  bot.user.setActivity(`Simplicity | Type .help | I Am In ${bot.guilds.cache.size} Servers!`, { type: "LISTENING" });
 
 });
 
