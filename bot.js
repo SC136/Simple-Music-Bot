@@ -1,12 +1,12 @@
 const { Client } = require('discord.js');
-const { play, stop, help, ping} = require('./commands');
+const { play, stop, help, ping, server} = require('./commands');
 
 const bot = new Client();
 
 bot.login('NzgwODM4NzA4NjY0NDY3NDU2.X706tw.ffi28PFilfRlL-vu1XyFQt1ZzOw');
 
 bot.on('ready', () => {
-  console.log('Bot has logged in and is playing music!');
+  console.log('Bot Has Logged in And Is Playing Music!');
   bot.user.setActivity("Simplicity | Type .help", { type: "LISTENING" });
 
 });
@@ -28,6 +28,8 @@ bot.on('message', (msg) => {
       return help(msg, args); 
     else if  (commandName === 'ping')
       return ping(msg, args);
+    else if  (commandName === 'server')
+      return server(msg, args);
 });
 
 function getCommandName(prefix, content) {

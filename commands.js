@@ -48,8 +48,12 @@ async function help(msg) {
 async function ping(msg) {
   await msg.channel.send(`🏓Latency Is ${Date.now() - msg.createdTimestamp}ms.`);
 }
+async function server(msg) {
+  await msg.channel.send('**Simple Music Bot Support Server Invite Link :** https://discord.gg/Qysc2PXp5e')
+}
 
 module.exports.play = play;
 module.exports.stop = stop;
 module.exports.help = help;
 module.exports.ping = ping;
+module.exports.server = server;
