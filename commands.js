@@ -55,10 +55,10 @@ async function server(msg) {
   await msg.channel.send(embed);
 }
 async function servers(msg) {
-  await msg.channel.send(`**Simple Music Bot Total Servers :** ${client.guilds.cache.size}`);
+  await msg.channel.send(`**Simple Music Bot Total Servers :** ${bot.guilds.cache.size}`);
 }
 async function users(msg) {
-  await msg.channel.send(`**Simple Music Bot Total Users :** ${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`);
+  await msg.channel.send(`**Simple Music Bot Total Users :** ${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`);
 }
 
 module.exports.play = play;
