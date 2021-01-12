@@ -1,6 +1,7 @@
 const downloadYT = require('ytdl-core');
 const searchYT = require('yt-search');
-const { Discord, MessageEmbed } = require("discord.js");
+const { Discord, MessageEmbed, Client } = require("discord.js");
+const bot = new Client();
 async function play(msg, ...args) {
     
           if (!msg.member.voice.channel) {
@@ -43,7 +44,7 @@ async function stop(msg) {
   await msg.reply('Stopped.');
 }
 async function help(msg) {
-  await msg.reply('***Help Command*** \n\n`.help` (This Command) \n\n`.play <songname>` (Simply Plays A Song In The VC You Are In) \n\n`.stop` (Simply Stops The Song) \n\n`.ping` (Simply Shows You The Latency) \n\n`.server` (Gives You The Support Server Invite Linl) \n\nSo Simple! \n\n*If You Need Any Help Join The Support Server! Type `.server` To Get The Link!*');
+  await msg.reply('***Help Command*** \n\n`.help` (This Command) \n\n`.play <songname>` (Simply Plays A Song In The VC You Are In) \n\n`.stop` (Simply Stops The Song) \n\n`.ping` (Simply Shows You The Latency) \n\n`.server` (Gives You The Support Server Invite Link) \n\nSo Simple! \n\n*If You Need Any Help Join The Support Server! Type `.server` To Get The Link!*');
 }
 async function ping(msg) {
   await msg.channel.send(`🏓Latency Is ${Date.now() - msg.createdTimestamp}ms.`);
@@ -51,7 +52,7 @@ async function ping(msg) {
 async function server(msg) {
   const embed = new MessageEmbed()
   .setTitle('Simple Music Bot Support Server Invite Link :')
-  .setDescription('[Click Here To Join SC Bot Support Server](https://discord.gg/Qysc2PXp5e)')
+  .setDescription('[Click Here To Join The Support Server](https://discord.gg/Qysc2PXp5e)')
   await msg.channel.send(embed);
 }
 async function servers(msg) {
