@@ -49,7 +49,7 @@ async function ping(msg) {
   await msg.channel.send(`🏓Latency Is ${Date.now() - msg.createdTimestamp}ms.`);
 }
 async function server(msg) {
-  const embed = new MessageEmbed
+  const embed = new MessageEmbed()
   .setTitle('Simple Music Bot Support Server Invite Link :')
   .setDescription('[Click Here To Join SC Bot Support Server](https://discord.gg/Qysc2PXp5e)')
   await msg.channel.send(embed);
