@@ -1,12 +1,12 @@
 const { Client } = require('discord.js');
-const { play, stop, help, ping, server, servers, users} = require('./commands');
+const { play, stop, help, ping, server, servers, users, invite} = require('./commands');
 
 const bot = new Client();
 
 bot.login('NzgwODM4NzA4NjY0NDY3NDU2.X706tw.ffi28PFilfRlL-vu1XyFQt1ZzOw');
 
 bot.on('ready', () => {
-  console.log('Bot Has Logged in And Is Playing Music!');
+  console.log(`Bot Has Logged in And Is Playing Music! \nSimple Music Bot Is In ${bot.guilds.cache.size}!`);
   bot.user.setActivity(`Simplicity | Type .help | I Am In ${bot.guilds.cache.size} Servers!`, { type: "LISTENING" });
 
 });
@@ -34,6 +34,8 @@ bot.on('message', (msg) => {
       return servers(msg, args);
     else if (commandName === 'users')
       return users(msg, args);
+    else if (commandName === 'invite')
+      return invite(msg, args);
 });
 
 function getCommandName(prefix, content) {
