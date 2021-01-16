@@ -1,11 +1,11 @@
 const downloadYT = require('ytdl-core');
 const searchYT = require('yt-search');
-const { Discord, Client } = require("discord.js");
+const { Discord, MessageEmbed, Client } = require("discord.js");
 const bot = new Client();
 async function play(msg, ...args) {
     
           if (!msg.member.voice.channel) {
-            let errorEmbed = new Discord.MessageEmbed()
+            let errorEmbed = new MessageEmbed()
                 .setDescription('You Need To Be In A Voice Channel To Play The Music!')
             	.setFooter(`Requested By: ${msg.author.tag}`, msg.author.avatarURL({ "format": "png" }))
             return msg.channel.send(errorEmbed);
@@ -33,7 +33,7 @@ async function findVideo(query) {
 
 async function stop(msg) {
             if (!msg.member.voice.channel) {
-            let errorEmbed = new Discord.MessageEmbed()
+            let errorEmbed = new MessageEmbed()
                 .setDescription('You Need To Be In A Voice Channel To Stop The Music!')
             	.setFooter(`Requested by: ${msg.author.tag}`, msg.author.avatarURL({ "format": "png" }))
             return msg.channel.send(errorEmbed);
@@ -50,7 +50,7 @@ async function ping(msg) {
   await msg.channel.send(`🏓Latency Is ${Date.now() - msg.createdTimestamp}ms.`);
 }
 async function server(msg) {
-  const embed = new Discord.MessageEmbed()
+  const embed = new MessageEmbed()
   .setTitle('Simple Music Bot Support Server Invite Link :')
   .setDescription('Click [Here](https://discord.gg/Qysc2PXp5e) To Join The Support Server')
   await msg.channel.send(embed);
@@ -62,7 +62,7 @@ async function users(msg) {
   await msg.channel.send(`**Simple Music Bot Total Users :** ${this.bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`);
 }
 async function invite(msg) {
-  const invite = new Discord.MessageEmbed()
+  const invite = new MessageEmbed()
   .setTitle('Simple Music Bot Invite Link :')
   .setDescription('[Click Here To Invite Simple Music Bot](https://discord.com/api/oauth2/authorize?client_id=780838708664467456&permissions=3147776&scope=bot)')
   await msg.channel.send(invite)
