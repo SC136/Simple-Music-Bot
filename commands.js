@@ -1,7 +1,7 @@
 const downloadYT = require('ytdl-core');
 const searchYT = require('yt-search');
 const Discord = require("discord.js");
-const bot = new Client();
+//const bot = new Client();
 async function play(msg, ...args) {
     
           if (!msg.member.voice.channel) {
@@ -56,10 +56,10 @@ async function server(msg) {
   await msg.channel.send(embed);
 }
 async function servers(msg) {
-  await msg.channel.send(`**Simple Music Bot Total Servers :** ${bot.guilds.cache.size}`);
+  await msg.channel.send(`**Simple Music Bot Total Servers :** ${this.bot.guilds.cache.size}`);
 }
 async function users(msg) {
-  await msg.channel.send(`**Simple Music Bot Total Users :** ${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`);
+  await msg.channel.send(`**Simple Music Bot Total Users :** ${this.bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`);
 }
 
 module.exports.play = play;
