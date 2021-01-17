@@ -9,8 +9,8 @@ const ap = AutoPoster('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc4MDgzODcw
 bot.login('NzgwODM4NzA4NjY0NDY3NDU2.X706tw.ffi28PFilfRlL-vu1XyFQt1ZzOw');
 
 bot.on('ready', () => {
-  console.log(`Bot Has Logged in And Is Playing Music! \nSimple Music Bot Is In ${bot.guilds.cache.size} Servers!`);
-  bot.user.setActivity(`Simplicity | Type .help | I Am In ${bot.guilds.cache.size} Servers! & ${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} People Are Using Me!`, { type: "LISTENING" });
+  console.log(`Bot Has Logged in And Is Playing Music! \nSimple Music Bot Is In ${bot.guilds.cache.size} Servers! \n${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} People Are Using Simple Music Bot!`);
+  bot.user.setActivity(`Simplicity | Type .help | I Am In ${bot.guilds.cache.size} Servers!`, { type: "LISTENING" });
 
 });
 

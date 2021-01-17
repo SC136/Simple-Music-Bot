@@ -44,7 +44,7 @@ async function stop(msg) {
   await msg.reply('Stopped.');
 }
 async function help(msg) {
-  await msg.reply('***Help Command*** \n\n`.help` (This Command) \n\n`.play <songname>` (Simply Plays A Song In The VC You Are In) \n\n`.stop` (Simply Stops The Song) \n\n`.ping` (Simply Shows You The Latency) \n\n`.server` (Gives You The Support Server Invite Link) \n\n`.invite` (Gives You The Link To Invite The Bot In Your Server) \n\nSo Simple! \n\n*If You Need Any Help Join The Support Server! Type `.server` To Get The Link!*');
+  await msg.reply('***Help Command*** \n\n`.help` (This Command) \n\n`.play <songname>` (Simply Plays A Song In The VC You Are In) \n\n`.stop` (Simply Stops The Song) \n\n`.ping` (Simply Shows You The Latency) \n\n`.server` (Gives You The Support Server Invite Link) \n\n`.invite` (Gives You The Link To Invite The Bot In Your Server) \n\n`.vote` (Gives You A List Where You Can Vote The Bot!) \n\nSo Simple! \n\n*If You Need Any Help Join The Support Server! Type `.server` To Get The Link!*');
 }
 async function ping(msg) {
   await msg.channel.send(`🏓Latency Is ${Date.now() - msg.createdTimestamp}ms.`);
@@ -68,7 +68,13 @@ async function invite(msg) {
   await msg.channel.send(invite)
 }
 async function vote(msg) {
-  await msg.channel.send('You Can Vote Simple Music Bot Here In These Lists : \n\n[Top.gg](https://top.gg/bot/780838708664467456/vote) /n/n[Discord Boats](https://discord.boats/bot/780838708664467456/vote) \n\n[Bots For Discord](https://botsfordiscord.com/bot/780838708664467456/vote) \n\n[Discord Bot List](https://discordbotlist.com/bots/simple-music-bot/upvote)')
+  const vote = new MessageEmbed()
+  .setTitle('You Can Vote Simple Music Bot Here In These Lists :')
+  .addField('[Top.gg](https://top.gg/bot/780838708664467456/vote)')
+  .addField('[Discord Boats](https://discord.boats/bot/780838708664467456/vote)')
+  .addField('[Bots For Discord](https://botsfordiscord.com/bot/780838708664467456/vote)')
+  .addField('[Discord Bot List](https://discordbotlist.com/bots/simple-music-bot/upvote)')
+  await msg.channel.send(vote)
 }
 
 module.exports.play = play;
