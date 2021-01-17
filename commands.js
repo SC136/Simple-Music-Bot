@@ -56,16 +56,19 @@ async function server(msg) {
   await msg.channel.send(embed);
 }
 async function servers(msg) {
-  await msg.channel.send(`**Simple Music Bot Total Servers :** ${this.bot.guilds.cache.size}`);
+  await msg.channel.send(`**Simple Music Bot Total Servers :** ${bot.guilds.cache.size}`);
 }
 async function users(msg) {
-  await msg.channel.send(`**Simple Music Bot Total Users :** ${this.bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`);
+  await msg.channel.send(`**Simple Music Bot Total Users :** ${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`);
 }
 async function invite(msg) {
   const invite = new MessageEmbed()
   .setTitle('Simple Music Bot Invite Link :')
   .setDescription('[Click Here To Invite Simple Music Bot](https://discord.com/api/oauth2/authorize?client_id=780838708664467456&permissions=3147776&scope=bot)')
   await msg.channel.send(invite)
+}
+async function vote(msg) {
+  await msg.channel.send('You Can Vote Simple Music Bot Here In These Lists : \n\n[Top.gg](https://top.gg/bot/780838708664467456/vote) /n/n[Discord Boats](https://discord.boats/bot/780838708664467456/vote) \n\n[Bots For Discord](https://botsfordiscord.com/bot/780838708664467456/vote) \n\n[Discord Bot List](https://discordbotlist.com/bots/simple-music-bot/upvote)')
 }
 
 module.exports.play = play;
@@ -76,3 +79,4 @@ module.exports.server = server;
 module.exports.servers = servers;
 module.exports.users = users;
 module.exports.invite = invite;
+module.exports.vote = vote;

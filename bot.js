@@ -1,15 +1,22 @@
-const { Client } = require('discord.js');
-const { play, stop, help, ping, server, servers, users, invite} = require('./commands');
+const { Client, VoiceState } = require('discord.js');
+const { play, stop, help, ping, server, servers, users, invite, vote} = require('./commands');
+const AutoPoster = require('topgg-autoposter')
 
 const bot = new Client();
+
+const ap = AutoPoster('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc4MDgzODcwODY2NDQ2NzQ1NiIsImJvdCI6dHJ1ZSwiaWF0IjoxNjEwODY5MjI5fQ.JSpTq_AuZQGJai_C61sP8QWziyUmspNjmwgfGnIogao', bot) // your discord.js or eris client
 
 bot.login('NzgwODM4NzA4NjY0NDY3NDU2.X706tw.ffi28PFilfRlL-vu1XyFQt1ZzOw');
 
 bot.on('ready', () => {
   console.log(`Bot Has Logged in And Is Playing Music! \nSimple Music Bot Is In ${bot.guilds.cache.size} Servers!`);
-  bot.user.setActivity(`Simplicity | Type .help | I Am In ${bot.guilds.cache.size} Servers!`, { type: "LISTENING" });
+  bot.user.setActivity(`Simplicity | Type .help | I Am In ${bot.guilds.cache.size} Servers! & ${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} People Are Using Me!`, { type: "LISTENING" });
 
 });
+
+ap.on('posted', () => { // ran when succesfully posted
+  console.log('Posted stats to top.gg')
+})
 
 bot.on('message', (msg) => {
     if (msg.author.bot) return;
@@ -36,6 +43,8 @@ bot.on('message', (msg) => {
       return users(msg, args);
     else if (commandName === 'invite')
       return invite(msg, args);
+    else if (commandName === 'vote')
+      return vote(msg, args);
 });
 
 function getCommandName(prefix, content) {
