@@ -2,6 +2,7 @@ const downloadYT = require('ytdl-core');
 const searchYT = require('yt-search');
 const { Discord, MessageEmbed, Client } = require("discord.js");
 const bot = new Client();
+const moment = require('moment');
 async function play(msg, ...args) {
     
           if (!msg.member.voice.channel) {
@@ -19,7 +20,7 @@ async function play(msg, ...args) {
       const stream = downloadYT(video.url, {filter: 'audioonly'});
       connection.play(stream, { seek: 0, volume: 1 });
 
-      await msg.reply(`Now playing \`${video.title}\`.`);
+      await msg.reply(`Now Playing \`${video.title}\`.`);
   } else
     await msg.reply(`You Need To Enter A Valid Song Name!`);
 }
@@ -44,7 +45,7 @@ async function stop(msg) {
   await msg.reply('Stopped.');
 }
 async function help(msg) {
-  await msg.reply('***Help Command*** \n\n`.help` (This Command) \n\n`.play <songname>` (Simply Plays A Song In The VC You Are In) \n\n`.stop` (Simply Stops The Song) \n\n`.ping` (Simply Shows You The Latency) \n\n`.server` (Gives You The Support Server Invite Link) \n\n`.invite` (Gives You The Link To Invite The Bot In Your Server) \n\n`.vote` (Gives You A List Where You Can Vote The Bot!) \n\nSo Simple! \n\n*If You Need Any Help Join The Support Server! Type `.server` To Get The Link!*');
+  await msg.reply('***Help Command*** \n\n`.help` (This Command) \n\n`.play <songname>` (Simply Plays A Song In The VC You Are In) \n\n`.stop` (Simply Stops The Song) \n\n`.ping` (Simply Shows You The Latency) \n\n`.server` (Gives You The Support Server Invite Link) \n\n`.invite` (Gives You The Link To Invite The Bot In Your Server) \n\n`.vote` (Gives You A List Where You Can Vote The Bot!) \n\n`.uptime` (Give You The Bot\'s Uptime!) \n\nSo Simple! \n\n*If You Need Any Help Join The Support Server! Type `.server` To Get The Link!*');
 }
 async function ping(msg) {
   await msg.channel.send(`🏓Latency Is ${Date.now() - msg.createdTimestamp}ms.`);
@@ -52,6 +53,7 @@ async function ping(msg) {
 async function server(msg) {
   const embed = new MessageEmbed()
   .setTitle('Simple Music Bot Support Server Invite Link :')
+  .setThumbnail('https://images.discordapp.net/avatars/780838708664467456/edc00a67ea08480b50497fb1b6fe10a8.png?size=512')
   .setDescription('Click [Here](https://discord.gg/Qysc2PXp5e) To Join The Support Server')
   await msg.channel.send(embed);
 }
@@ -59,22 +61,44 @@ async function servers(msg) {
   await msg.channel.send(`**Simple Music Bot Total Servers :** ${bot.guilds.cache.size}`);
 }
 async function users(msg) {
-  await msg.channel.send(`**Simple Music Bot Total Users :** ${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`);
+  await msg.channel.send(`**Simple Music Bot Total Users :** ${bot.users.cache.size}`);
 }
 async function invite(msg) {
   const invite = new MessageEmbed()
   .setTitle('Simple Music Bot Invite Link :')
   .setDescription('[Click Here To Invite Simple Music Bot](https://discord.com/api/oauth2/authorize?client_id=780838708664467456&permissions=3147776&scope=bot)')
+  .setThumbnail('https://images.discordapp.net/avatars/780838708664467456/edc00a67ea08480b50497fb1b6fe10a8.png?size=512')
   await msg.channel.send(invite)
 }
 async function vote(msg) {
   const vote = new MessageEmbed()
+  .setDescription('If You Use Simple Music Bot & You Like It,\nThen Consider Voting The Bot In One Of These List!')
+  .setThumbnail('https://images.discordapp.net/avatars/780838708664467456/edc00a67ea08480b50497fb1b6fe10a8.png?size=512')
   .setTitle('You Can Vote Simple Music Bot Here In These Lists :')
-  .addField('[Top.gg](https://top.gg/bot/780838708664467456/vote)')
-  .addField('[Discord Boats](https://discord.boats/bot/780838708664467456/vote)')
-  .addField('[Bots For Discord](https://botsfordiscord.com/bot/780838708664467456/vote)')
-  .addField('[Discord Bot List](https://discordbotlist.com/bots/simple-music-bot/upvote)')
+  .addField('Top.gg', `[Vote!](https://top.gg/bot/780838708664467456/vote "Vote On Top.gg! (Recommended)") (Recommended)`)
+  .addField('Discord Boats', `[Vote!](https://discord.boats/bot/780838708664467456/vote "Vote On Discord Boats!")`)
+  .addField('Bots For Discord', `[Vote!](https://botsfordiscord.com/bot/780838708664467456/vote "Vote For Bots For Discord!")`)
+  .addField('Discord Bot List',`[Vote!](https://discordbotlist.com/bots/simple-music-bot/upvote "Vote On Discord Bot List!")`)
+  .setFooter('Tip : You Can Vote Daily!')
+  .setColor(msg.guild.me.displayHexColor)
   await msg.channel.send(vote)
+}
+async function uptime(msg) {
+  const d = moment.duration(msg.client.uptime);
+    const days = (d.days() == 1) ? `${d.days()} Day` : `${d.days()} Days`;
+    const hours = (d.hours() == 1) ? `${d.hours()} Hour` : `${d.hours()} Hours`;
+    const minutes = (d.minutes() == 1) ? `${d.minutes()} Minute` : `${d.minutes()} Minutes`;
+    const seconds = (d.seconds() == 1) ? `${d.seconds()} Second` : `${d.seconds()} Seconds`;
+    const date = moment().subtract(d, 'ms').format('dddd, MMMM Do YYYY');
+    const embed = new MessageEmbed()
+      .setTitle('Simple Music Bot Uptime :')
+      .setThumbnail('')
+      .setDescription(`\`\`\`prolog\n${days}, ${hours}, ${minutes}, and ${seconds}\`\`\``)
+      .addField('Date Launched :', date) 
+      .setFooter(msg.member.displayName,  msg.author.displayAvatarURL({ dynamic: true }))
+      .setTimestamp()
+      .setColor(msg.guild.me.displayHexColor);
+  await msg.channel.send(embed);
 }
 
 module.exports.play = play;
@@ -86,3 +110,4 @@ module.exports.servers = servers;
 module.exports.users = users;
 module.exports.invite = invite;
 module.exports.vote = vote;
+module.exports.uptime = uptime;

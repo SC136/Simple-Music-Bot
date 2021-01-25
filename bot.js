@@ -1,5 +1,5 @@
 const { Client, VoiceState } = require('discord.js');
-const { play, stop, help, ping, server, servers, users, invite, vote} = require('./commands');
+const { play, stop, help, ping, server, servers, users, invite, vote, uptime, np} = require('./commands');
 const AutoPoster = require('topgg-autoposter')
 
 const bot = new Client();
@@ -9,8 +9,8 @@ const ap = AutoPoster('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc4MDgzODcw
 bot.login('NzgwODM4NzA4NjY0NDY3NDU2.X706tw.ffi28PFilfRlL-vu1XyFQt1ZzOw');
 
 bot.on('ready', () => {
-  console.log(`Bot Has Logged in And Is Playing Music! \nSimple Music Bot Is In ${bot.guilds.cache.size} Servers! \n${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} People Are Using Simple Music Bot!`);
-  bot.user.setActivity(`Simplicity | Type .help | I Am In ${bot.guilds.cache.size} Servers!`, { type: "LISTENING" });
+  console.log(`Bot Has Logged in And Is Playing Music! \nSimple Music Bot Is In ${bot.guilds.cache.size} Servers! \n${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} People Are Using Simple Music Bot! \nTotal Channels : ${bot.channels.cache.size}!`);
+  bot.user.setActivity(`Simplicity | Type .help | I Am In ${bot.guilds.cache.size} Servers! & ${bot.users.cache.size} People Are Using Me!`, { type: "LISTENING" });
 
 });
 
@@ -45,6 +45,8 @@ bot.on('message', (msg) => {
       return invite(msg, args);
     else if (commandName === 'vote')
       return vote(msg, args);
+    else if (commandName === 'uptime')
+      return uptime(msg, args);
 });
 
 function getCommandName(prefix, content) {
