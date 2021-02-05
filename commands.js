@@ -13,7 +13,7 @@ async function play(msg, ...args) {
     return msg.channel.send(errorEmbed);
   }
 
-  const permissions = VoiceChannel.permissionsFor(message.bot.user);
+  const permissions = VoiceChannel.permissionsFor(msg.bot.user);
   if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) return msg.reply("I Am Missing Permissions!")
 
   if (!args.length) return msg.reply("Please Give A Song Name!");
