@@ -13,8 +13,7 @@ async function play(msg, ...args) {
     return msg.channel.send(errorEmbed);
   }
 
-  const permissions = VoiceChannel.permissionsFor(msg.bot.user);
-  if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) return msg.reply("I Am Missing Permissions!")
+  if(!guild.me.permissions.has('CONNECT')) return msg.reply("I Dont Have Permission To Connect To A VC!")
 
   if (!args.length) return msg.reply("Please Give A Song Name!");
   const vc = msg.member.voice.channel;
