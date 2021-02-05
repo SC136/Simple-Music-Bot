@@ -15,7 +15,7 @@ async function play(msg, ...args) {
 
   const Channel = msg.member.voice.channel;
 
-  if (!Channel.joinable || !Channel.speakable) return message.channel.send("I Dont Have Permission To Connect To A VC!");
+  if (!Channel.joinable || !Channel.speakable) return msg.channel.send("I Dont Have Permission To Connect Or Speak In A VC!");
 
   if (!args.length) return msg.reply("Please Give A Song Name!");
   const vc = msg.member.voice.channel;
