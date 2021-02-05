@@ -12,8 +12,8 @@ async function play(msg, ...args) {
       .setFooter(`Requested By: ${msg.author.tag}`, msg.author.avatarURL({ "format": "png" }))
     return msg.channel.send(errorEmbed);
   }
-
-  if(!guild.me.permissions.has('CONNECT')) return msg.reply("I Dont Have Permission To Connect To A VC!")
+  const { guild } = msg
+  if (!guild.me.permissions.has('CONNECT')) return msg.reply("I Dont Have Permission To Connect To A VC!")
 
   if (!args.length) return msg.reply("Please Give A Song Name!");
   const vc = msg.member.voice.channel;
