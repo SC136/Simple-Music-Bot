@@ -13,7 +13,7 @@ async function play(msg, ...args) {
     return msg.channel.send(errorEmbed);
   }
 
-  const Channel = message.member.voice.channel;
+  const Channel = msg.member.voice.channel;
 
   if (!Channel.joinable || !Channel.speakable) return message.channel.send("I Dont Have Permission To Connect To A VC!");
 
