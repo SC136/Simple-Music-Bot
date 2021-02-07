@@ -66,7 +66,7 @@ async function server(msg) {
 async function servers(bot, msg) {
   await msg.channel.send(`**Simple Music Bot Total Servers :** ${bot.guilds.cache.size}`);
 }
-async function users(msg) {
+async function users(bot, msg) {
   await msg.channel.send(`**Simple Music Bot Total Users :** ${bot.users.cache.size}`);
 }
 async function invite(msg) {
@@ -106,6 +106,39 @@ async function uptime(msg) {
     .setColor(msg.guild.me.displayHexColor);
   await msg.channel.send(embed);
 }
+async function p(msg, ...args) {
+
+  if (!msg.member.voice.channel) {
+    let errorEmbed = new MessageEmbed()
+      .setDescription('You Need To Be In A Voice Channel To Play The Music!')
+      .setFooter(`Requested By: ${msg.author.tag}`, msg.author.avatarURL({ "format": "png" }))
+    return msg.channel.send(errorEmbed);
+  }
+
+  const Channel = msg.member.voice.channel;
+
+  if (!Channel.joinable || !Channel.speakable) return msg.channel.send("I Dont Have Permission To Connect Or Speak In A VC!");
+
+  if (!args.length) return msg.reply("Please Give A Song Name!");
+  const vc = msg.member.voice.channel;
+  const connection = await vc.join();
+  const video = await findVideo(args.join(' '));
+
+  if (video) {
+    const stream = downloadYT(video.url, { filter: 'audioonly' });
+    connection.play(stream, { seek: 0, volume: 1 });
+
+    await msg.reply(`Now Playing \`${video.title}\`.`);
+  } else
+    await msg.reply(`You Need To Enter A Valid Song Name!`);
+}
+async function findVideo(query) {
+  if (!query.length) return;
+  const result = await searchYT(query);
+  return (result.videos.length > 1)
+    ? result.videos[0]
+    : null;
+}
 
 module.exports.play = play;
 module.exports.stop = stop;
@@ -117,3 +150,4 @@ module.exports.users = users;
 module.exports.invite = invite;
 module.exports.vote = vote;
 module.exports.uptime = uptime;
+module.exports.p = p;
