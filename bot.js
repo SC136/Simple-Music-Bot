@@ -38,7 +38,7 @@ bot.on('message', (msg) => {
     else if  (commandName === 'server')
       return server(msg, args);
     else if  (commandName === 'servers')
-      return servers(msg, args);
+      return servers(bot, msg, args);
     else if (commandName === 'users')
       return users(msg, args);
     else if (commandName === 'invite')

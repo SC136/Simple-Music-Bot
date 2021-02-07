@@ -1,7 +1,7 @@
 const downloadYT = require('ytdl-core');
 const searchYT = require('yt-search');
 const { Discord, MessageEmbed, Client, VoiceChannel } = require("discord.js");
-const bot = new Client();
+//const bot = new Client();
 const moment = require('moment');
 
 async function play(msg, ...args) {
@@ -63,7 +63,7 @@ async function server(msg) {
     .setDescription('Click [Here](https://discord.gg/Qysc2PXp5e) To Join The Support Server')
   await msg.channel.send(embed);
 }
-async function servers(msg) {
+async function servers(bot, msg) {
   await msg.channel.send(`**Simple Music Bot Total Servers :** ${bot.guilds.cache.size}`);
 }
 async function users(msg) {
