@@ -105,7 +105,7 @@ async function invite(bot, msg) {
     .setColor("#2F3136")
   await msg.channel.send(invite)
 }
-async function vote(msg) {
+async function vote(bot, msg) {
   const vote = new MessageEmbed()
     .setDescription('If You Use Simple Music Bot & You Like It,\nThen Consider Voting The Bot In One Of These List!')
     .setThumbnail(`${bot.user.displayAvatarURL()}`)

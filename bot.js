@@ -44,7 +44,7 @@ bot.on('message', (msg) => {
     else if (commandName === 'invite')
       return invite(bot, msg, args);
     else if (commandName === 'vote')
-      return vote(msg, args);
+      return vote(bot, msg, args);
     else if (commandName === 'uptime')
       return uptime(msg, args);
     else if (commandName === 'botinfo')
