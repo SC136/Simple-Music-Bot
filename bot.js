@@ -27,7 +27,7 @@ bot.on('message', (msg) => {
     const commandName = getCommandName(prefix, msg.content);
     const args = getCommandArgs(prefix, msg.content);
 
-    if (commandName === 'play', 'p')
+    if (commandName === 'play')
       return play(msg, args);
     else if  (commandName === 'stop')
       return stop(msg, args);
