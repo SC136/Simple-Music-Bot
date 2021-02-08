@@ -133,7 +133,7 @@ async function botinfo(bot, msg) {
   .addField('Channels :', `${bot.channels.cache.size}`)
   .addField('Emojis :', `${bot.emojis.cache.size}`, true)
   .addField('Hmmm...')
-  await msg.channel.send('botinfo')
+  await msg.channel.send(embed  )
 }
 module.exports.play = play;
 module.exports.stop = stop;
