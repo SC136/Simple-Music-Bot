@@ -68,7 +68,7 @@ async function servers(bot, msg) {
     .setTitle('Simple Music Bot')
     .setDescription(`\`\`\`prolog\n${bot.guilds.cache.size}\`\`\``)
     .setThumbnail(`${bot.user.displayAvatarURL()}`)
-    .addField('Total Servers :', `${bot.guilds.cache.size}`)
+    .addField('Total Servers :', ```${bot.guilds.cache.size}```)
     .setTimestamp()
   await msg.channel.send(embed);
 }
