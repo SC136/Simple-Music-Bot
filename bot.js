@@ -32,7 +32,7 @@ bot.on('message', (msg) => {
     else if  (commandName === 'stop')
       return stop(msg, args);
     else if  (commandName === 'help')
-      return help(msg, args); 
+      return help(bot, msg, args); 
     else if  (commandName === 'ping')
       return ping(msg, args);
     else if  (commandName === 'server')

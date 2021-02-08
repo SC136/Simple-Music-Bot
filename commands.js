@@ -1,7 +1,6 @@
 const downloadYT = require('ytdl-core');
 const searchYT = require('yt-search');
 const { Discord, MessageEmbed, Client, VoiceChannel } = require("discord.js");
-//const bot = new Client();
 const moment = require('moment');
 const { mem, cpu, os } = require('node-os-utils');
 
@@ -51,8 +50,21 @@ async function stop(msg) {
 
   await msg.reply('Stopped.');
 }
-async function help(msg) {
-  await msg.reply('***Help Command*** \n\n`.help` (This Command) \n\n`.play <songname>` (Simply Plays A Song In The VC You Are In) \n\n`.stop` (Simply Stops The Song) \n\n`.ping` (Simply Shows You The Latency) \n\n`.server` (Gives You The Support Server Invite Link) \n\n`.invite` (Gives You The Link To Invite The Bot In Your Server) \n\n`.vote` (Gives You A List Where You Can Vote The Bot!) \n\n`.uptime` (Give You The Bot\'s Uptime!) \n\nSo Simple! \n\n*If You Need Any Help Join The Support Server! Type `.server` To Get The Link!*');
+async function help(bot,msg) {
+  const embed = new MessageEmbed()
+  .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot Help Command')
+  .setThumbnail(`${bot.user.displayAvatarURL()}`)
+  .setDescription('So Simple!')
+  .addField('.play', '```.play <songname> (Simply Plays A Song In The VC You Are In```', true)
+  .addField('.stop', '```Simply Stops The Song```', true)
+  .addField('.ping', '```Simply Shows You The Latency```', true)
+  .addField('.server', '```Gives You The Support Server Invite Link```', true)
+  .addField('.invite', '```Gives You The Link To Invite The Bot In Your Server```', true)
+  .addField('.vote', '```Gives You A List Where You Can Vote The Bot!```', true)
+  .addField('.uptime', '```Give You The Bot\'s Uptime!```', true)
+  .addField('.botinfo', '```Give Some Info/Stats About The Bot```', true)
+  .setFooter('If You Need Any Help Join The Support Server! Type `.server` To Get The Link!')
+  await msg.reply(embed);
 }
 async function ping(msg) {
   await msg.channel.send(`🏓Latency Is ${Date.now() - msg.createdTimestamp}ms.`);
@@ -87,7 +99,7 @@ async function users(bot, msg) {
 }
 async function invite(bot, msg) {
   const invite = new MessageEmbed()
-    .setTitle('Simple Music Bot Invite Link :')
+    .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot Invite Link :')
     .setDescription('[Click Here To Invite Simple Music Bot](https://discord.com/api/oauth2/authorize?client_id=780838708664467456&permissions=3147776&scope=bot)')
     .setThumbnail(`${bot.user.displayAvatarURL()}`)
     .setColor("#2F3136")
@@ -97,7 +109,7 @@ async function vote(msg) {
   const vote = new MessageEmbed()
     .setDescription('If You Use Simple Music Bot & You Like It,\nThen Consider Voting The Bot In One Of These List!')
     .setThumbnail(`${bot.user.displayAvatarURL()}`)
-    .setTitle('You Can Vote Simple Music Bot Here In These Lists :')
+    .setTitle('<:SimpleMusicBot:797533617042882612> You Can Vote Simple Music Bot Here In These Lists :')
     .addField('Top.gg', `[Vote!](https://top.gg/bot/780838708664467456/vote "Vote On Top.gg! (Recommended)") (Recommended)`)
     .addField('Discord Boats', `[Vote!](https://discord.boats/bot/780838708664467456/vote "Vote On Discord Boats!")`)
     .addField('Bots For Discord', `[Vote!](https://botsfordiscord.com/bot/780838708664467456/vote "Vote For Bots For Discord!")`)
@@ -114,7 +126,7 @@ async function uptime(msg) {
   const seconds = (d.seconds() == 1) ? `${d.seconds()} Second` : `${d.seconds()} Seconds`;
   const date = moment().subtract(d, 'ms').format('dddd, MMMM Do YYYY');
   const embed = new MessageEmbed()
-    .setTitle('Simple Music Bot Uptime :')
+    .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot Uptime :')
     .setThumbnail('')
     .setDescription(`\`\`\`prolog\n${days}, ${hours}, ${minutes}, and ${seconds}\`\`\``)
     .addField('Date Launched :', date)
@@ -127,16 +139,19 @@ async function uptime(msg) {
 async function botinfo(bot, msg) {
   const { totalMemMb, usedMemMb } = await mem.info();
   const embed = new MessageEmbed()
-  .setTitle('Simple Music Bot\'s Info/Stats')
+  .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot\'s Info/Stats')
   .setThumbnail(`${bot.user.displayAvatarURL()}`)
   .setDescription('BotInfo Nothing More')
   .addField('Name :', `\`\`\`${bot.user.username}\`\`\``, true)
   .addField('Servers :', `\`\`\`${bot.guilds.cache.size}\`\`\``, true)
-  .addField('Users :', `\`\`\`${bot.users.cache.size}\`\`\``, true)
+  .addField('Users :', `\`\`\`${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`\`\``, true)
   .addField('Channels :', `\`\`\`${bot.channels.cache.size}\`\`\``, true)
   .addField('Emojis :', `\`\`\`${bot.emojis.cache.size}\`\`\``, true)
-  .addField('Stats', `\`\`\`**Total Memory (RAM)    :** ${totalMemMb} MB \nUsed Memory (RAM)     : ${usedMemMb} MB \nCPU Usage             : ${await cpu.usage()} \nCPU Model             : ${cpu.model()} \nCPU Cores             : ${cpu.count()} \nOS (Operating System) : ${await os.oos()}\`\`\``)
+  .addField('Owner :', '```SC#0600```')
+  .addField('Support Server Invite Link :', '```https://discord.gg/Qysc2PXp5e```')
+  .addField('Stats', `\`\`\`Total Memory (RAM)    : ${totalMemMb} MB \nUsed Memory (RAM)     : ${usedMemMb} MB \nCPU Usage             : ${await cpu.usage()} \nCPU Model             : ${cpu.model()} \nCPU Cores             : ${cpu.count()} \nOS (Operating System) : ${await os.oos()}\`\`\``)
   .setColor("#2F3136")
+  .setTimestamp()
   await msg.channel.send(embed)
 }
 module.exports.play = play;
