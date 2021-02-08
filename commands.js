@@ -66,7 +66,7 @@ async function server(msg) {
 async function servers(bot, msg) {
   const embed = new MessageEmbed()
     .setTitle('Simple Music Bot Total Servers :')
-    .setDescription(```${bot.guilds.cache.size}```)
+    .setDescription(`${bot.guilds.cache.size}`)
     .setThumbnail(`${bot.user.displayAvatarURL()}`)
   await msg.channel.send(embed);
 }
