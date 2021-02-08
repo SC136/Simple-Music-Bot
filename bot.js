@@ -15,7 +15,7 @@ bot.on('ready', () => {
 });
 
 ap.on('posted', () => { // ran when succesfully posted
-  console.log('Posted stats to top.gg')
+  console.log('Posted Stats to Top.gg')
 })
 
 bot.on('message', (msg) => {

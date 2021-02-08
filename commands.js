@@ -64,10 +64,14 @@ async function server(msg) {
   await msg.channel.send(embed);
 }
 async function servers(bot, msg) {
-  await msg.channel.send(`**Simple Music Bot Total Servers :** ${bot.guilds.cache.size}`);
+  const embed = new MessageEmbed()
+    .setTitle('Simple Music Bot Total Servers :')
+    .setDescription(```${bot.guilds.cache.size}```)
+    .setThumbnail(`${bot.user.displayAvatarURL}`)
+  await msg.channel.send(embed);
 }
 async function users(bot, msg) {
-  await msg.channel.send(`**Simple Music Bot Total Users :** ${bot.users.cache.size}`);
+  await msg.channel.send(`**Simple Music Bot Total Users :** ${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`);
 }
 async function invite(msg) {
   const invite = new MessageEmbed()
