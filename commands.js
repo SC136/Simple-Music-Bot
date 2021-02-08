@@ -68,7 +68,7 @@ async function servers(bot, msg) {
     .setTitle('Simple Music Bot')
     .setDescription(`\`\`\`prolog\n${bot.guilds.cache.size}\`\`\``)
     .setThumbnail(`${bot.user.displayAvatarURL()}`)
-    .addField('Total Servers :', ```${bot.guilds.cache.size}```)
+    .addField('Total Servers :', `\`\`\`${bot.guilds.cache.size}\`\`\``)
     .setTimestamp()
   await msg.channel.send(embed);
 }
@@ -111,6 +111,9 @@ async function uptime(msg) {
     .setTimestamp()
     .setColor(msg.guild.me.displayHexColor);
   await msg.channel.send(embed);
+}
+async function botinfo(bot, msg) {
+  await msg.channel.send('botinfo')
 }
 async function p(msg, ...args) {
 
@@ -157,3 +160,4 @@ module.exports.invite = invite;
 module.exports.vote = vote;
 module.exports.uptime = uptime;
 module.exports.p = p;
+module.exports.botinfo = botinfo;

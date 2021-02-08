@@ -1,5 +1,5 @@
 const { Client, VoiceState } = require('discord.js');
-const { play, stop, help, ping, server, servers, users, invite, vote, uptime, np, p} = require('./commands');
+const { play, stop, help, ping, server, servers, users, invite, vote, uptime, np, p, botinfo} = require('./commands');
 const AutoPoster = require('topgg-autoposter')
 
 const bot = new Client();
@@ -45,10 +45,12 @@ bot.on('message', (msg) => {
       return invite(msg, args);
     else if (commandName === 'vote')
       return vote(msg, args);
-    else if (commandName === 'uptime')
+    else if (commandName === 'uptime, up')
       return uptime(msg, args);
     else if (commandName === 'p')
       return p(msg, args);
+    else if (commandName === 'botinfo')
+      return botinfo(bot, msg);
 });
 
 function getCommandName(prefix, content) {
