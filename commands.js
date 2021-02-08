@@ -63,6 +63,7 @@ async function help(bot,msg) {
   .addField('.vote', '```Gives You A List Where You Can Vote The Bot!```', true)
   .addField('.uptime', '```Give You The Bot\'s Uptime!```', true)
   .addField('.botinfo', '```Give Some Info/Stats About The Bot```', true)
+  .setColor('#2F3136')
   .setFooter('If You Need Any Help Join The Support Server! Type `.server` To Get The Link!')
   await msg.reply(embed);
 }
