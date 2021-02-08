@@ -95,7 +95,7 @@ async function invite(bot, msg) {
 async function vote(msg) {
   const vote = new MessageEmbed()
     .setDescription('If You Use Simple Music Bot & You Like It,\nThen Consider Voting The Bot In One Of These List!')
-    .setThumbnail('https://images.discordapp.net/avatars/780838708664467456/edc00a67ea08480b50497fb1b6fe10a8.png?size=512')
+    .setThumbnail(`${bot.user.displayAvatarURL()}`)
     .setTitle('You Can Vote Simple Music Bot Here In These Lists :')
     .addField('Top.gg', `[Vote!](https://top.gg/bot/780838708664467456/vote "Vote On Top.gg! (Recommended)") (Recommended)`)
     .addField('Discord Boats', `[Vote!](https://discord.boats/bot/780838708664467456/vote "Vote On Discord Boats!")`)
@@ -126,12 +126,13 @@ async function uptime(msg) {
 async function botinfo(bot, msg) {
   const embed = new MessageEmbed()
   .setTitle('Simple Music Bot\'s Info/Stats')
+  .setThumbnail(`${bot.user.displayAvatarURL()}`)
   .setDescription('BotInfo Nothing More')
-  .addField('Name :', `${bot.user.username}`, true)
-  .addField('Servers :', `${bot.guilds.cache.size}`, true)
-  .addField('Users :', `${bot.users.cache.size}`)
-  .addField('Channels :', `${bot.channels.cache.size}`)
-  .addField('Emojis :', `${bot.emojis.cache.size}`, true)
+  .addField('Name :', `\`\`\`${bot.user.username}\`\`\``, true)
+  .addField('Servers :', `\`\`\`${bot.guilds.cache.size}\`\`\``, true)
+  .addField('Users :', `\`\`\`${bot.users.cache.size}\`\`\``, true)
+  .addField('Channels :', `\`\`\`${bot.channels.cache.size}\`\`\``)
+  .addField('Emojis :', `\`\`\`${bot.emojis.cache.size}\`\`\``, true)
   .addField('Hmmm...')
   await msg.channel.send(embed  )
 }
