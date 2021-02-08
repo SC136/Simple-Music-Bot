@@ -67,7 +67,7 @@ async function server(bot, msg) {
 async function servers(bot, msg) {
   const embed = new MessageEmbed()
     .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot')
-    .setDescription('The Total Number Of \nDiscord Servers That The Bot Is In')
+    .setDescription('The Total Number Of \nDiscord Servers That The \nBot Is In')
     .setThumbnail(`${bot.user.displayAvatarURL()}`)
     .addField('Total Servers :', `\`\`\`${bot.guilds.cache.size}\`\`\``)
     .setColor("#2F3136")
@@ -77,7 +77,7 @@ async function servers(bot, msg) {
 async function users(bot, msg) {
   const embed = new MessageEmbed()
     .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot')
-    .setDescription('The Total Number Of \nUsers That Are In The Servers That The Bot Is In')
+    .setDescription('The Total Number Of \nUsers That Are In The \nServers That The Bot Is In')
     .setThumbnail(`${bot.user.displayAvatarURL()}`)
     .addField('Total Users :', `\`\`\`${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`\`\``)
     .setColor("#2F3136")
@@ -130,7 +130,7 @@ async function botinfo(bot, msg) {
   .addField('Name :', `${bot.user.username}`, true)
   .addField('Servers :', `${bot.guilds.cache.size}`, true)
   .addField('Users :', `${bot.users.cache.size}`)
-  .addField('Channels :' `${bot.channels.cache.size}`)
+  .addField('Channels :', `${bot.channels.cache.size}`)
   .addField('Emojis :', `${bot.emojis.cache.size}`, true)
   .addField('Hmmm...')
   await msg.channel.send('botinfo')
