@@ -27,13 +27,13 @@ bot.on('message', (msg) => {
     const commandName = getCommandName(prefix, msg.content);
     const args = getCommandArgs(prefix, msg.content);
 
-    if (commandName === 'play')
+    if (commandName === 'play', 'p')
       return play(msg, args);
-    else if  (commandName === 'stop')
+    else if  (commandName === 'stop', 's')
       return stop(msg, args);
-    else if  (commandName === 'help')
+    else if  (commandName === 'help', 'h')
       return help(msg, args); 
-    else if  (commandName === 'ping')
+    else if  (commandName === 'ping', 'p')
       return ping(msg, args);
     else if  (commandName === 'server')
       return server(msg, args);
@@ -41,14 +41,12 @@ bot.on('message', (msg) => {
       return servers(bot, msg, args);
     else if (commandName === 'users')
       return users(bot, msg, args);
-    else if (commandName === 'invite')
+    else if (commandName === 'invite', 'i')
       return invite(msg, args);
     else if (commandName === 'vote')
       return vote(msg, args);
     else if (commandName === 'uptime', 'up')
       return uptime(msg, args);
-    else if (commandName === 'p')
-      return p(msg, args);
     else if (commandName === 'botinfo')
       return botinfo(bot, msg);
 });

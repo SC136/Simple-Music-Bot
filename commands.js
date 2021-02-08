@@ -59,16 +59,17 @@ async function ping(msg) {
 async function server(msg) {
   const embed = new MessageEmbed()
     .setTitle('Simple Music Bot Support Server Invite Link :')
-    .setThumbnail('https://images.discordapp.net/avatars/780838708664467456/edc00a67ea08480b50497fb1b6fe10a8.png?size=512')
+    .setThumbnail(`${bot.user.displayAvatarURL()}`)
     .setDescription('Click [Here](https://discord.gg/Qysc2PXp5e) To Join The Support Server')
   await msg.channel.send(embed);
 }
 async function servers(bot, msg) {
   const embed = new MessageEmbed()
     .setTitle('Simple Music Bot')
-    .setDescription(`\`\`\`prolog\n${bot.guilds.cache.size}\`\`\``)
+    .setDescription('The Total Number Of Discord Servers That The Bot Is In')
     .setThumbnail(`${bot.user.displayAvatarURL()}`)
     .addField('Total Servers :', `\`\`\`${bot.guilds.cache.size}\`\`\``)
+    .setColor("#2F3136")
     .setTimestamp()
   await msg.channel.send(embed);
 }
@@ -79,7 +80,7 @@ async function invite(msg) {
   const invite = new MessageEmbed()
     .setTitle('Simple Music Bot Invite Link :')
     .setDescription('[Click Here To Invite Simple Music Bot](https://discord.com/api/oauth2/authorize?client_id=780838708664467456&permissions=3147776&scope=bot)')
-    .setThumbnail('https://images.discordapp.net/avatars/780838708664467456/edc00a67ea08480b50497fb1b6fe10a8.png?size=512')
+    .setThumbnail(`${bot.user.displayAvatarURL()}`)
   await msg.channel.send(invite)
 }
 async function vote(msg) {
@@ -115,40 +116,6 @@ async function uptime(msg) {
 async function botinfo(bot, msg) {
   await msg.channel.send('botinfo')
 }
-async function p(msg, ...args) {
-
-  if (!msg.member.voice.channel) {
-    let errorEmbed = new MessageEmbed()
-      .setDescription('You Need To Be In A Voice Channel To Play The Music!')
-      .setFooter(`Requested By: ${msg.author.tag}`, msg.author.avatarURL({ "format": "png" }))
-    return msg.channel.send(errorEmbed);
-  }
-
-  const Channel = msg.member.voice.channel;
-
-  if (!Channel.joinable || !Channel.speakable) return msg.channel.send("I Dont Have Permission To Connect Or Speak In A VC!");
-
-  if (!args.length) return msg.reply("Please Give A Song Name!");
-  const vc = msg.member.voice.channel;
-  const connection = await vc.join();
-  const video = await findVideo(args.join(' '));
-
-  if (video) {
-    const stream = downloadYT(video.url, { filter: 'audioonly' });
-    connection.play(stream, { seek: 0, volume: 1 });
-
-    await msg.reply(`Now Playing \`${video.title}\`.`);
-  } else
-    await msg.reply(`You Need To Enter A Valid Song Name!`);
-}
-async function findVideo(query) {
-  if (!query.length) return;
-  const result = await searchYT(query);
-  return (result.videos.length > 1)
-    ? result.videos[0]
-    : null;
-}
-
 module.exports.play = play;
 module.exports.stop = stop;
 module.exports.help = help;
@@ -159,5 +126,4 @@ module.exports.users = users;
 module.exports.invite = invite;
 module.exports.vote = vote;
 module.exports.uptime = uptime;
-module.exports.p = p;
 module.exports.botinfo = botinfo;
