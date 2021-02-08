@@ -58,15 +58,16 @@ async function ping(msg) {
 }
 async function server(bot, msg) {
   const embed = new MessageEmbed()
-    .setTitle('Simple Music Bot Support Server Invite Link :')
+    .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot Support Server Invite Link :')
     .setThumbnail(`${bot.user.displayAvatarURL()}`)
     .setDescription('Click [Here](https://discord.gg/Qysc2PXp5e) To Join The Support Server')
+    .setColor("#2F3136")
   await msg.channel.send(embed);
 }
 async function servers(bot, msg) {
   const embed = new MessageEmbed()
-    .setTitle('Simple Music Bot')
-    .setDescription('The Total Number Of Discord Servers That The Bot Is In')
+    .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot')
+    .setDescription('The Total Number Of \nDiscord Servers That The Bot Is In')
     .setThumbnail(`${bot.user.displayAvatarURL()}`)
     .addField('Total Servers :', `\`\`\`${bot.guilds.cache.size}\`\`\``)
     .setColor("#2F3136")
@@ -74,13 +75,21 @@ async function servers(bot, msg) {
   await msg.channel.send(embed);
 }
 async function users(bot, msg) {
-  await msg.channel.send(`**Simple Music Bot Total Users :** ${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`);
+  const embed = new MessageEmbed()
+    .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot')
+    .setDescription('The Total Number Of \nUsers That Are In The Servers That The Bot Is In')
+    .setThumbnail(`${bot.user.displayAvatarURL()}`)
+    .addField('Total Users :', `\`\`\`${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`\`\``)
+    .setColor("#2F3136")
+    .setTimestamp()
+  await msg.channel.send(embed);
 }
 async function invite(bot, msg) {
   const invite = new MessageEmbed()
     .setTitle('Simple Music Bot Invite Link :')
     .setDescription('[Click Here To Invite Simple Music Bot](https://discord.com/api/oauth2/authorize?client_id=780838708664467456&permissions=3147776&scope=bot)')
     .setThumbnail(`${bot.user.displayAvatarURL()}`)
+    .setColor("#2F3136")
   await msg.channel.send(invite)
 }
 async function vote(msg) {
@@ -93,7 +102,7 @@ async function vote(msg) {
     .addField('Bots For Discord', `[Vote!](https://botsfordiscord.com/bot/780838708664467456/vote "Vote For Bots For Discord!")`)
     .addField('Discord Bot List', `[Vote!](https://discordbotlist.com/bots/simple-music-bot/upvote "Vote On Discord Bot List!")`)
     .setFooter('Tip : You Can Vote Daily!')
-    .setColor(msg.guild.me.displayHexColor)
+    .setColor("#2F3136")
   await msg.channel.send(vote)
 }
 async function uptime(msg) {
@@ -110,7 +119,8 @@ async function uptime(msg) {
     .addField('Date Launched :', date)
     .setFooter(msg.member.displayName, msg.author.displayAvatarURL({ dynamic: true }))
     .setTimestamp()
-    .setColor(msg.guild.me.displayHexColor);
+    .setColor("#2F3136")
+    //.setColor(msg.guild.me.displayHexColor);
   await msg.channel.send(embed);
 }
 async function botinfo(bot, msg) {
