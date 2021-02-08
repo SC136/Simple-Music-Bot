@@ -124,6 +124,15 @@ async function uptime(msg) {
   await msg.channel.send(embed);
 }
 async function botinfo(bot, msg) {
+  const embed = new MessageEmbed()
+  .setTitle('Simple Music Bot\'s Info/Stats')
+  .setDescription('BotInfo Nothing More')
+  .addField('Name :', `${bot.user.username}`, true)
+  .addField('Servers :', `${bot.guilds.cache.size}`, true)
+  .addField('Users :', `${bot.users.cache.size}`)
+  .addField('Channels :' `${bot.channels.cache.size}`)
+  .addField('Emojis :', `${bot.emojis.cache.size}`, true)
+  .addField('Hmmm...')
   await msg.channel.send('botinfo')
 }
 module.exports.play = play;
