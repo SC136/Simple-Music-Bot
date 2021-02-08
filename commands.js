@@ -3,6 +3,7 @@ const searchYT = require('yt-search');
 const { Discord, MessageEmbed, Client, VoiceChannel } = require("discord.js");
 //const bot = new Client();
 const moment = require('moment');
+const { mem, cpu, os } = require('node-os-utils');
 
 async function play(msg, ...args) {
 
@@ -124,6 +125,7 @@ async function uptime(msg) {
   await msg.channel.send(embed);
 }
 async function botinfo(bot, msg) {
+  const { totalMemMb, usedMemMb } = await mem.info();
   const embed = new MessageEmbed()
   .setTitle('Simple Music Bot\'s Info/Stats')
   .setThumbnail(`${bot.user.displayAvatarURL()}`)
@@ -131,10 +133,11 @@ async function botinfo(bot, msg) {
   .addField('Name :', `\`\`\`${bot.user.username}\`\`\``, true)
   .addField('Servers :', `\`\`\`${bot.guilds.cache.size}\`\`\``, true)
   .addField('Users :', `\`\`\`${bot.users.cache.size}\`\`\``, true)
-  .addField('Channels :', `\`\`\`${bot.channels.cache.size}\`\`\``)
+  .addField('Channels :', `\`\`\`${bot.channels.cache.size}\`\`\``, true)
   .addField('Emojis :', `\`\`\`${bot.emojis.cache.size}\`\`\``, true)
-  .addField('Hmmm...')
-  await msg.channel.send(embed  )
+  .addField('Stats', `\`\`\`Total Memory (RAM) :${totalMemMb} MB \nUsed Memory (RAM) : ${usedMemMb} MB \nCPU Usage : ${await cpu.usage()} \nCPU Model : ${cpu.model()} \nCPU Cores : ${cpu.count()} \nOS (Operating System) : ${await os.oos()}\`\`\``)
+  .setColor("#2F3136")
+  await msg.channel.send(embed)
 }
 module.exports.play = play;
 module.exports.stop = stop;
