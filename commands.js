@@ -135,7 +135,7 @@ async function botinfo(bot, msg) {
   .addField('Users :', `\`\`\`${bot.users.cache.size}\`\`\``, true)
   .addField('Channels :', `\`\`\`${bot.channels.cache.size}\`\`\``, true)
   .addField('Emojis :', `\`\`\`${bot.emojis.cache.size}\`\`\``, true)
-  .addField('Stats', `\`\`\`Total Memory (RAM) :${totalMemMb} MB \nUsed Memory (RAM) : ${usedMemMb} MB \nCPU Usage : ${await cpu.usage()} \nCPU Model : ${cpu.model()} \nCPU Cores : ${cpu.count()} \nOS (Operating System) : ${await os.oos()}\`\`\``)
+  .addField('Stats', `\`\`\`**Total Memory (RAM)    :** ${totalMemMb} MB \nUsed Memory (RAM)     : ${usedMemMb} MB \nCPU Usage             : ${await cpu.usage()} \nCPU Model             : ${cpu.model()} \nCPU Cores             : ${cpu.count()} \nOS (Operating System) : ${await os.oos()}\`\`\``)
   .setColor("#2F3136")
   await msg.channel.send(embed)
 }
