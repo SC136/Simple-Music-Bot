@@ -56,7 +56,7 @@ async function help(msg) {
 async function ping(msg) {
   await msg.channel.send(`🏓Latency Is ${Date.now() - msg.createdTimestamp}ms.`);
 }
-async function server(msg) {
+async function server(bot, msg) {
   const embed = new MessageEmbed()
     .setTitle('Simple Music Bot Support Server Invite Link :')
     .setThumbnail(`${bot.user.displayAvatarURL()}`)
@@ -76,7 +76,7 @@ async function servers(bot, msg) {
 async function users(bot, msg) {
   await msg.channel.send(`**Simple Music Bot Total Users :** ${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}`);
 }
-async function invite(msg) {
+async function invite(bot, msg) {
   const invite = new MessageEmbed()
     .setTitle('Simple Music Bot Invite Link :')
     .setDescription('[Click Here To Invite Simple Music Bot](https://discord.com/api/oauth2/authorize?client_id=780838708664467456&permissions=3147776&scope=bot)')

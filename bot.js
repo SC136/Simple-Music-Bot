@@ -36,13 +36,13 @@ bot.on('message', (msg) => {
     else if  (commandName === 'ping')
       return ping(msg, args);
     else if  (commandName === 'server')
-      return server(msg, args);
+      return server(bot, msg, args);
     else if  (commandName === 'servers')
       return servers(bot, msg, args);
     else if (commandName === 'users')
       return users(bot, msg, args);
     else if (commandName === 'invite')
-      return invite(msg, args);
+      return invite(bot, msg, args);
     else if (commandName === 'vote')
       return vote(msg, args);
     else if (commandName === 'uptime')
