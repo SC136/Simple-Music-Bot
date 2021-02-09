@@ -65,7 +65,10 @@ async function join(msg) {
   if (!Channel.joinable || !Channel.speakable) return msg.channel.send("I Dont Have Permission To Connect Or Speak In A VC!");
 
   const vc = msg.member.voice.channel;
-  const connection = await vc.join();
+  const connection = await vc.join()
+    .then(connection => {
+      connection.voice.setSelfDeaf(true);
+    });
 
   await msg.reply('Joined The VC Which You Are In!')
 }
@@ -205,7 +208,7 @@ async function botinfo(bot, msg) {
 module.exports.play = play;
 module.exports.stop = stop;
 module.exports.join = join;
-module,exports.leave = leave;
+module, exports.leave = leave;
 module.exports.help = help;
 module.exports.ping = ping;
 module.exports.server = server;
