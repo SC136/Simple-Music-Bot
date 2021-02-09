@@ -19,7 +19,10 @@ async function play(msg, ...args) {
 
   if (!args.length) return msg.reply("Please Give A Song Name!");
   const vc = msg.member.voice.channel;
-  const connection = await vc.join();
+  const connection = await vc.join()
+    .then(connection => {
+      connection.voice.setSelfDeaf(true);
+    });
   const video = await findVideo(args.join(' '));
 
   if (video) {
@@ -50,21 +53,21 @@ async function stop(msg) {
 
   await msg.reply('Stopped.');
 }
-async function help(bot,msg) {
+async function help(bot, msg) {
   const embed = new MessageEmbed()
-  .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot Help Command')
-  .setThumbnail(`${bot.user.displayAvatarURL()}`)
-  .setDescription('So Simple!')
-  .addField('.play', '```.play <songname> (Simply Plays A Song In The VC You Are In```', true)
-  .addField('.stop', '```Simply Stops The Song```', true)
-  .addField('.ping', '```Simply Shows You The Latency```', true)
-  .addField('.server', '```Gives You The Support Server Invite Link```', true)
-  .addField('.invite', '```Gives You The Link To Invite The Bot In Your Server```', true)
-  .addField('.vote', '```Gives You A List Where You Can Vote The Bot!```', true)
-  .addField('.uptime', '```Give You The Bot\'s Uptime!```', true)
-  .addField('.botinfo', '```Give Some Info/Stats About The Bot```', true)
-  .setColor('#2F3136')
-  .setFooter('If You Need Any Help Join The Support Server! Type `.server` To Get The Link!')
+    .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot Help Command')
+    .setThumbnail(`${bot.user.displayAvatarURL()}`)
+    .setDescription('So Simple!')
+    .addField('.play', '```.play <songname> (Simply Plays A Song In The VC You Are In```', true)
+    .addField('.stop', '```Simply Stops The Song```', true)
+    .addField('.ping', '```Simply Shows You The Latency```', true)
+    .addField('.server', '```Gives You The Support Server Invite Link```', true)
+    .addField('.invite', '```Gives You The Link To Invite The Bot In Your Server```', true)
+    .addField('.vote', '```Gives You A List Where You Can Vote The Bot!```', true)
+    .addField('.uptime', '```Give You The Bot\'s Uptime!```', true)
+    .addField('.botinfo', '```Give Some Info/Stats About The Bot```', true)
+    .setColor('#2F3136')
+    .setFooter('If You Need Any Help Join The Support Server! Type `.server` To Get The Link!')
   await msg.reply(embed);
 }
 async function ping(msg) {
@@ -134,25 +137,26 @@ async function uptime(msg) {
     .setFooter(msg.member.displayName, msg.author.displayAvatarURL({ dynamic: true }))
     .setTimestamp()
     .setColor("#2F3136")
-    //.setColor(msg.guild.me.displayHexColor);
+  //.setColor(msg.guild.me.displayHexColor);
   await msg.channel.send(embed);
 }
 async function botinfo(bot, msg) {
   const { totalMemMb, usedMemMb } = await mem.info();
   const embed = new MessageEmbed()
-  .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot\'s Info/Stats')
-  .setThumbnail(`${bot.user.displayAvatarURL()}`)
-  .setDescription('BotInfo Nothing More')
-  .addField('Name :', `\`\`\`${bot.user.username}\`\`\``, true)
-  .addField('Servers :', `\`\`\`${bot.guilds.cache.size}\`\`\``, true)
-  .addField('Users :', `\`\`\`${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`\`\``, true)
-  .addField('Channels :', `\`\`\`${bot.channels.cache.size}\`\`\``, true)
-  .addField('Emojis :', `\`\`\`${bot.emojis.cache.size}\`\`\``, true)
-  .addField('Owner :', '```SC#0600```')
-  .addField('Support Server Invite Link :', '```https://discord.gg/Qysc2PXp5e```')
-  .addField('Stats', `\`\`\`Total Memory (RAM)    : ${totalMemMb} MB \nUsed Memory (RAM)     : ${usedMemMb} MB \nCPU Usage             : ${await cpu.usage()} \nCPU Model             : ${cpu.model()} \nCPU Cores             : ${cpu.count()} \nOS (Operating System) : ${await os.oos()}\`\`\``)
-  .setColor("#2F3136")
-  .setTimestamp()
+    .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot\'s Info/Stats')
+    .setThumbnail(`${bot.user.displayAvatarURL()}`)
+    .setDescription('BotInfo Nothing More')
+    .addField('Name :', `\`\`\`${bot.user.username}\`\`\``, true)
+    .addField('ID :', `\`\`\`${bot.user.id}\`\`\``)
+    .addField('Servers :', `\`\`\`${bot.guilds.cache.size}\`\`\``, true)
+    .addField('Users :', `\`\`\`${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`\`\``, true)
+    .addField('Channels :', `\`\`\`${bot.channels.cache.size}\`\`\``, true)
+    .addField('Emojis :', `\`\`\`${bot.emojis.cache.size}\`\`\``, true)
+    .addField('Owner :', '```SC#0600```')
+    .addField('Support Server Invite Link :', '```https://discord.gg/Qysc2PXp5e```')
+    .addField('Stats', `\`\`\`Total Memory (RAM)    : ${totalMemMb} MB \nUsed Memory (RAM)     : ${usedMemMb} MB \nCPU Usage             : ${await cpu.usage()} \nCPU Model             : ${cpu.model()} \nCPU Cores             : ${cpu.count()} \nOS (Operating System) : ${await os.oos()}\`\`\``)
+    .setColor("#2F3136")
+    .setTimestamp()
   await msg.channel.send(embed)
 }
 module.exports.play = play;
