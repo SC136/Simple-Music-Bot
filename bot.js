@@ -1,7 +1,8 @@
-const { Client, VoiceState, Discord } = require('discord.js');
-const { play, stop, help, ping, server, servers, users, invite, vote, uptime, botinfo} = require('./commands');
+const { Client, VoiceState } = require('discord.js');
+const { play, stop, help, ping, server, servers, users, invite, vote, uptime, botinfo } = require('./commands');
 const AutoPoster = require('topgg-autoposter')
-Discord.Constants.DefaultOptions.ws.properties.$browser = "Discord Android";
+const Discord = require('discord.js')
+Discord.Constants.DefaultOptions.ws.properties.$browser = "Discord Android"
 const bot = new Client();
 
 const ap = AutoPoster('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc4MDgzODcwODY2NDQ2NzQ1NiIsImJvdCI6dHJ1ZSwiaWF0IjoxNjEwODY5MjI5fQ.JSpTq_AuZQGJai_C61sP8QWziyUmspNjmwgfGnIogao', bot) // your discord.js or eris client
@@ -19,46 +20,46 @@ ap.on('posted', () => { // ran when succesfully posted
 })
 
 bot.on('message', (msg) => {
-    if (msg.author.bot) return;
+  if (msg.author.bot) return;
 
-    const prefix = '.';
-    if (!msg.content.startsWith(prefix)) return;
+  const prefix = '.';
+  if (!msg.content.startsWith(prefix)) return;
 
-    const commandName = getCommandName(prefix, msg.content);
-    const args = getCommandArgs(prefix, msg.content);
+  const commandName = getCommandName(prefix, msg.content);
+  const args = getCommandArgs(prefix, msg.content);
 
-    if (commandName === 'play')
-      return play(msg, args);
-    else if  (commandName === 'stop')
-      return stop(msg, args);
-    else if  (commandName === 'help')
-      return help(bot, msg, args); 
-    else if  (commandName === 'ping')
-      return ping(msg, args);
-    else if  (commandName === 'server')
-      return server(bot, msg, args);
-    else if  (commandName === 'servers')
-      return servers(bot, msg, args);
-    else if (commandName === 'users')
-      return users(bot, msg, args);
-    else if (commandName === 'invite')
-      return invite(bot, msg, args);
-    else if (commandName === 'vote')
-      return vote(bot, msg, args);
-    else if (commandName === 'uptime')
-      return uptime(msg, args);
-    else if (commandName === 'botinfo')
-      return botinfo(bot, msg);
+  if (commandName === 'play')
+    return play(msg, args);
+  else if (commandName === 'stop')
+    return stop(msg, args);
+  else if (commandName === 'help')
+    return help(bot, msg, args);
+  else if (commandName === 'ping')
+    return ping(msg, args);
+  else if (commandName === 'server')
+    return server(bot, msg, args);
+  else if (commandName === 'servers')
+    return servers(bot, msg, args);
+  else if (commandName === 'users')
+    return users(bot, msg, args);
+  else if (commandName === 'invite')
+    return invite(bot, msg, args);
+  else if (commandName === 'vote')
+    return vote(bot, msg, args);
+  else if (commandName === 'uptime')
+    return uptime(msg, args);
+  else if (commandName === 'botinfo')
+    return botinfo(bot, msg);
 });
 
 function getCommandName(prefix, content) {
-    return content 
+  return content
     .slice(prefix.length)
     .split(' ')[0];
 }
 function getCommandArgs(prefix, content) {
-    return content
-      .slice(prefix.length)
-      .split(' ')
-      .slice(1);
+  return content
+    .slice(prefix.length)
+    .split(' ')
+    .slice(1);
 }
