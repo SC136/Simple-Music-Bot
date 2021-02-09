@@ -19,7 +19,7 @@ async function play(msg, ...args) {
 
   if (!args.length) return msg.reply("Please Give A Song Name!");
   const vc = msg.member.voice.channel;
-  const connection = await vc.join()
+  const connect = await vc.join()
   .then(connection => {
     connection.voice.setSelfDeaf(true);
   });
@@ -27,7 +27,7 @@ async function play(msg, ...args) {
 
   if (video) {
     const stream = downloadYT(video.url, { filter: 'audioonly' });
-    connection.play(stream, { seek: 0, volume: 1 });
+    connect.play(stream, { seek: 0, volume: 1 });
 
     await msg.reply(`Now Playing \`${video.title}\`.`);
   } else
