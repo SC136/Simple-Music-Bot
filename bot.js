@@ -1,8 +1,8 @@
 const { Client, VoiceState } = require('discord.js');
 const { play, stop, help, ping, server, servers, users, invite, vote, uptime, botinfo, join } = require('./commands');
 const AutoPoster = require('topgg-autoposter')
-const Discord = require('discord.js')
-Discord.Constants.DefaultOptions.ws.properties.$browser = "Discord Android"
+//const Discord = require('discord.js')
+//Discord.Constants.DefaultOptions.ws.properties.$browser = "Discord Android"
 const bot = new Client();
 
 const ap = AutoPoster('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc4MDgzODcwODY2NDQ2NzQ1NiIsImJvdCI6dHJ1ZSwiaWF0IjoxNjEwODY5MjI5fQ.JSpTq_AuZQGJai_C61sP8QWziyUmspNjmwgfGnIogao', bot) // your discord.js or eris client

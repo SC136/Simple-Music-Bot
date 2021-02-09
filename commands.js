@@ -66,6 +66,8 @@ async function join(msg) {
 
   const vc = msg.member.voice.channel;
   const connection = await vc.join();
+
+  await msg.reply('Joined The VC Which You Are In!')
 }
 async function help(bot, msg) {
   const embed = new MessageEmbed()
