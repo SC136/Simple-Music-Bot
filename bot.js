@@ -1,4 +1,4 @@
-const { Client, VoiceState } = require('discord.js');
+const { Client, VoiceState, Discord } = require('discord.js');
 const { play, stop, help, ping, server, servers, users, invite, vote, uptime, botinfo} = require('./commands');
 const AutoPoster = require('topgg-autoposter')
 Discord.Constant.DefaultOptions.ws.properties.$browser = "Discord Android"
