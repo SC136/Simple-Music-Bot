@@ -20,9 +20,9 @@ async function play(msg, ...args) {
   if (!args.length) return msg.reply("Please Give A Song Name!");
   const vc = msg.member.voice.channel;
   const connection = await vc.join();
-    //.then(connection => {
-      //connection.voice.setSelfDeaf(true);
-    //});
+  //.then(connection => {
+  //connection.voice.setSelfDeaf(true);
+  //});
   const video = await findVideo(args.join(' '));
 
   if (video) {
@@ -132,7 +132,7 @@ async function uptime(msg) {
   const embed = new MessageEmbed()
     .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot Uptime :')
     .setThumbnail('')
-    .setDescription(`\`\`\`prolog\n${days}, ${hours}, ${minutes}, and ${seconds}\`\`\``)
+    .setDescription(`\`\`\`prolog\n${days}, ${hours}, ${minutes}, And ${seconds}\`\`\``)
     .addField('Date Launched :', date)
     .setFooter(msg.member.displayName, msg.author.displayAvatarURL({ dynamic: true }))
     .setTimestamp()
@@ -141,6 +141,12 @@ async function uptime(msg) {
   await msg.channel.send(embed);
 }
 async function botinfo(bot, msg) {
+  const d = moment.duration(msg.client.uptime);
+  const days = (d.days() == 1) ? `${d.days()} Day` : `${d.days()} Days`;
+  const hours = (d.hours() == 1) ? `${d.hours()} Hour` : `${d.hours()} Hours`;
+  const minutes = (d.minutes() == 1) ? `${d.minutes()} Minute` : `${d.minutes()} Minutes`;
+  const seconds = (d.seconds() == 1) ? `${d.seconds()} Second` : `${d.seconds()} Seconds`;
+  const date = moment().subtract(d, 'ms').format('dddd, MMMM Do YYYY');
   const { totalMemMb, usedMemMb } = await mem.info();
   const embed = new MessageEmbed()
     .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot\'s Info/Stats')
@@ -152,8 +158,12 @@ async function botinfo(bot, msg) {
     .addField('Users :', `\`\`\`${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`\`\``, true)
     .addField('Channels :', `\`\`\`${bot.channels.cache.size}\`\`\``, true)
     .addField('Emojis :', `\`\`\`${bot.emojis.cache.size}\`\`\``, true)
+    .addField('Created At :', `\`\`\`${moment.utc(user.createdAt).format("dddd, MMMM Do YYYY")}\`\`\``, true)
+    .addField('Joined This Server At :', `\`\`\`${moment.utc(user.joinedAt).format("dddd, MMMM Do YYYY")}\`\`\``, true)
+    .addField('Status :', `\`\`\`${bot.user.presence.status}\`\`\``)
     .addField('Owner :', '```SC#0600```')
     .addField('Support Server Invite Link :', '```https://discord.gg/Qysc2PXp5e```')
+    .addField('Uptime :', `\`\`\`${days}, ${hours}, ${minutes}, And ${seconds}\`\`\``)
     .addField('Stats', `\`\`\`Total Memory (RAM)    : ${totalMemMb} MB \nUsed Memory (RAM)     : ${usedMemMb} MB \nCPU Usage             : ${await cpu.usage()} \nCPU Model             : ${cpu.model()} \nCPU Cores             : ${cpu.count()} \nOS (Operating System) : ${await os.oos()}\`\`\``)
     .setColor("#2F3136")
     .setTimestamp()
