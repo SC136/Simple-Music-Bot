@@ -19,10 +19,10 @@ async function play(msg, ...args) {
 
   if (!args.length) return msg.reply("Please Give A Song Name!");
   const vc = msg.member.voice.channel;
-  const connection = await vc.join()
-    .then(connection => {
-      connection.voice.setSelfDeaf(true);
-    });
+  const connection = await vc.join();
+    //.then(connection => {
+      //connection.voice.setSelfDeaf(true);
+    //});
   const video = await findVideo(args.join(' '));
 
   if (video) {
@@ -147,7 +147,7 @@ async function botinfo(bot, msg) {
     .setThumbnail(`${bot.user.displayAvatarURL()}`)
     .setDescription('BotInfo Nothing More')
     .addField('Name :', `\`\`\`${bot.user.username}\`\`\``, true)
-    .addField('ID :', `\`\`\`${bot.user.id}\`\`\``)
+    .addField('ID :', `\`\`\`${bot.user.id}\`\`\``, true)
     .addField('Servers :', `\`\`\`${bot.guilds.cache.size}\`\`\``, true)
     .addField('Users :', `\`\`\`${bot.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`\`\``, true)
     .addField('Channels :', `\`\`\`${bot.channels.cache.size}\`\`\``, true)
