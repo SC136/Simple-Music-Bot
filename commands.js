@@ -20,9 +20,9 @@ async function play(msg, ...args) {
   if (!args.length) return msg.reply("Please Give A Song Name!");
   const vc = msg.member.voice.channel;
   const connection = await vc.join()
-  .then(connection => {
-    connection.voice.setSelfDeaf(true)
-  })
+  //.then(connection => {
+  //  connection.voice.setSelfDeaf(true);
+  //});
   const video = await findVideo(args.join(' '));
 
   if (video) {
