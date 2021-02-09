@@ -53,6 +53,20 @@ async function stop(msg) {
 
   await msg.reply('Stopped.');
 }
+async function join(msg) {
+  if (!msg.member.voice.channel) {
+    let errorEmbed = new MessageEmbed()
+      .setDescription('You Need To Be In A Voice Channel For Me To Join It!')
+      .setFooter(`Requested By: ${msg.author.tag}`, msg.author.avatarURL({ "format": "png" }))
+    return msg.channel.send(errorEmbed);
+  }
+  const Channel = msg.member.voice.channel;
+
+  if (!Channel.joinable || !Channel.speakable) return msg.channel.send("I Dont Have Permission To Connect Or Speak In A VC!");
+
+  const vc = msg.member.voice.channel;
+  const connection = await vc.join();
+}
 async function help(bot, msg) {
   const embed = new MessageEmbed()
     .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot Help Command')
@@ -176,6 +190,7 @@ async function botinfo(bot, msg) {
 }
 module.exports.play = play;
 module.exports.stop = stop;
+module.exports.join = join;
 module.exports.help = help;
 module.exports.ping = ping;
 module.exports.server = server;
