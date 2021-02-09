@@ -69,6 +69,18 @@ async function join(msg) {
 
   await msg.reply('Joined The VC Which You Are In!')
 }
+async function leave(msg) {
+  if (!msg.member.voice.channel) {
+    let errorEmbed = new MessageEmbed()
+      .setDescription('You Also Need To Be In A Voice Channel So I Can Leave It!')
+      .setFooter(`Requested by: ${msg.author.tag}`, msg.author.avatarURL({ "format": "png" }))
+    return msg.channel.send(errorEmbed);
+  }
+  const vc = msg.member.voice.channel;
+  await vc.leave();
+
+  await msg.reply('Left.');
+}
 async function help(bot, msg) {
   const embed = new MessageEmbed()
     .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot Help Command')
@@ -193,6 +205,7 @@ async function botinfo(bot, msg) {
 module.exports.play = play;
 module.exports.stop = stop;
 module.exports.join = join;
+module,exports.leave = leave;
 module.exports.help = help;
 module.exports.ping = ping;
 module.exports.server = server;
