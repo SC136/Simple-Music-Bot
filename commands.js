@@ -19,10 +19,10 @@ async function play(msg, ...args) {
 
   if (!args.length) return msg.reply("Please Give A Song Name!");
   const vc = msg.member.voice.channel;
-  const connection = await vc.join();
-  //.then(connection => {
-  //connection.voice.setSelfDeaf(true);
-  //});
+  const connection = await vc.join()
+  .then(connection => {
+    connection.voice.setSelfDeaf(true);
+  });
   const video = await findVideo(args.join(' '));
 
   if (video) {
@@ -91,6 +91,8 @@ async function help(bot, msg) {
     .setDescription('So Simple!')
     .addField('.play', '```.play <songname> (Simply Plays A Song In The VC You Are In```', true)
     .addField('.stop', '```Simply Stops The Song```', true)
+    .addField('.join', '```Simply Joins The VC You Are In```', true)
+    .addField('.leave', '```Simply Leaves The VC```', true)
     .addField('.ping', '```Simply Shows You The Latency```', true)
     .addField('.server', '```Gives You The Support Server Invite Link```', true)
     .addField('.invite', '```Gives You The Link To Invite The Bot In Your Server```', true)
