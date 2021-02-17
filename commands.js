@@ -4,7 +4,7 @@ const { Discord, MessageEmbed, Client, VoiceChannel, Message } = require("discor
 const moment = require('moment');
 const { mem, cpu, os } = require('node-os-utils');
 
-async function play(msg, ...args) {
+async function play(bot, msg, ...args) {
 
   if (!msg.member.voice.channel) {
     let errorEmbed = new MessageEmbed()
@@ -26,11 +26,9 @@ async function play(msg, ...args) {
   if (video) {
     const stream = downloadYT(video.url, { filter: 'audioonly' });
     connection.play(stream, { seek: 0, volume: 1 })
-      .then(connection => {
-        connection.voice.setSelfDeaf(true);
-      });
-
-    await msg.reply(`Now Playing \`${video.title}\`.`);
+    await msg.reply(
+      new MessageEmbed().setTitle('Now Playing...').setThumbnail(`${bot.user.displayAvatarURL()}`).setDescription(`\`\`\`${video.title}\`\`\``).setFooter(`Requested By ${msg.author.displayAvatarURL({dynamic: true})} ${msg.author.tag}`).setTimestamp()
+    );
   } else
     await msg.reply(`You Need To Enter A Valid Song Name!`);
 }
@@ -41,7 +39,7 @@ async function findVideo(query) {
     ? result.videos[0]
     : null;
 }
-
+//Now Playing \`${video.title}\`.
 async function stop(msg) {
   if (!msg.member.voice.channel) {
     let errorEmbed = new MessageEmbed()
