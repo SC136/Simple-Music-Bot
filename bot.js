@@ -1,4 +1,4 @@
-const { Client, VoiceState } = require('discord.js');
+const { Client, VoiceState, MessageEmbed } = require('discord.js');
 const { play, stop, help, ping, server, servers, users, invite, vote, uptime, botinfo, join, leave, topguilds } = require('./commands');
 const AutoPoster = require('topgg-autoposter')
 //const Discord = require('discord.js')
@@ -6,6 +6,8 @@ const AutoPoster = require('topgg-autoposter')
 const bot = new Client();
 
 const ap = AutoPoster('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc4MDgzODcwODY2NDQ2NzQ1NiIsImJvdCI6dHJ1ZSwiaWF0IjoxNjEwODY5MjI5fQ.JSpTq_AuZQGJai_C61sP8QWziyUmspNjmwgfGnIogao', bot) // your discord.js or eris client
+
+const logsChannel = '811499611285225492';
 
 bot.login('NzgwODM4NzA4NjY0NDY3NDU2.X706tw.ffi28PFilfRlL-vu1XyFQt1ZzOw');
 
@@ -56,6 +58,38 @@ bot.on('message', (msg) => {
     return botinfo(bot, msg);
   else if (commandName === 'topguilds')
     return topguilds(bot, msg)
+});
+
+bot.on('guildCreate', (guild) => {
+  bot.channels.cache.get(logsChannel).send(
+    new MessageEmbed()
+      .setTitle('New Server!')
+      .addField(
+        "Guild Info",
+        `${guild.name} (${guild.id}) **Members : ${guild.memberCount}!**`
+      )
+      .addField('Owner Info', `${guild.owner} (${guild.owner.id})`)
+      .setFooter(`Currently In ${bot.guilds.cache.size} Servers!`)
+      .setTimestamp()
+      .setThumbnail(guild.iconURL({ dynamic: true }))
+      .setColor('#2F3136')
+  );
+});
+
+bot.on('guildDelete', (guild) => {
+  bot.channels.cache.get(logsChannel).send(
+    new MessageEmbed()
+      .setTitle('Server Removed!')
+      .addField(
+        "Guild Info",
+        `${guild.name} (${guild.id}) **Members : ${guild.memberCount}!**`
+      )
+      .addField('Owner Info', `${guild.owner} (${guild.owner.id})`)
+      .setFooter(`Currently In ${bot.guilds.cache.size} Servers!`)
+      .setTimestamp()
+      .setThumbnail(guild.iconURL({ dynamic: true }))
+      .setColor('#2F3136')
+  );
 });
 
 function getCommandName(prefix, content) {
