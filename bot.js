@@ -54,7 +54,7 @@ bot.on('message', (msg) => {
     return uptime(msg, args);
   else if (commandName === 'botinfo')
     return botinfo(bot, msg);
-  else if (commandName === 'topguils')
+  else if (commandName === 'topguilds')
     return topguilds(bot, msg)
 });
 

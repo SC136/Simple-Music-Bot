@@ -218,7 +218,7 @@ async function topguilds(bot, msg) {
     })
     .join("\n");
 
-  message.channel.send(
+  await msg.channel.send(
     new MessageEmbed().setTitle(`${bot.user.username}'s Top Servers`).setDescription(description)
   )
 }
