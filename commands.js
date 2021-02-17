@@ -27,7 +27,7 @@ async function play(bot, msg, ...args) {
     const stream = downloadYT(video.url, { filter: 'audioonly' });
     connection.play(stream, { seek: 0, volume: 1 })
     await msg.reply(
-      new MessageEmbed().setTitle('Now Playing...').setThumbnail(`${bot.user.displayAvatarURL()}`).setDescription(`\`\`\`${video.title}\`\`\``).setFooter(`Requested By ${msg.author.displayAvatarURL({dynamic: true})} ${msg.author.tag}`).setTimestamp()
+      new MessageEmbed().setTitle('Now Playing...').setThumbnail(`${bot.user.displayAvatarURL()}`).setDescription(`\`\`\`prolog\n${video.title}\`\`\``).setFooter(`Requested By ${msg.author.tag}`).setTimestamp()
     );
   } else
     await msg.reply(`You Need To Enter A Valid Song Name!`);
