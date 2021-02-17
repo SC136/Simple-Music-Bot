@@ -1,5 +1,5 @@
 const { Client, VoiceState } = require('discord.js');
-const { play, stop, help, ping, server, servers, users, invite, vote, uptime, botinfo, join, leave } = require('./commands');
+const { play, stop, help, ping, server, servers, users, invite, vote, uptime, botinfo, join, leave, topguilds } = require('./commands');
 const AutoPoster = require('topgg-autoposter')
 //const Discord = require('discord.js')
 //Discord.Constants.DefaultOptions.ws.properties.$browser = "Discord Android"
@@ -54,6 +54,8 @@ bot.on('message', (msg) => {
     return uptime(msg, args);
   else if (commandName === 'botinfo')
     return botinfo(bot, msg);
+  else if (commandName === 'topguils')
+    return topguilds(bot, msg)
 });
 
 function getCommandName(prefix, content) {

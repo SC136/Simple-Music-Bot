@@ -1,6 +1,6 @@
 const downloadYT = require('ytdl-core');
 const searchYT = require('yt-search');
-const { Discord, MessageEmbed, Client, VoiceChannel } = require("discord.js");
+const { Discord, MessageEmbed, Client, VoiceChannel, Message } = require("discord.js");
 const moment = require('moment');
 const { mem, cpu, os } = require('node-os-utils');
 
@@ -207,6 +207,22 @@ async function botinfo(bot, msg) {
     .setTimestamp()
   await msg.channel.send(embed)
 }
+async function topguilds(bot, msg) {
+  const guilds = bot.guilds.cache
+    .sort((a, b) => b.memberCount - a.memberCount)
+    .first(10);
+
+  const description = guilds
+    .map((guild, index) => {
+      return `${index + 1}) ${guild.name}: ${guild.memberCount} members`;
+    })
+    .join("\n");
+
+  message.channel.send(
+    new MessageEmbed().setTitle(`${bot.user.username}'s Top Servers`).setDescription(description)
+  )
+}
+
 module.exports.play = play;
 module.exports.stop = stop;
 module.exports.join = join;
@@ -220,3 +236,4 @@ module.exports.invite = invite;
 module.exports.vote = vote;
 module.exports.uptime = uptime;
 module.exports.botinfo = botinfo;
+module.exports.topguilds = topguilds
