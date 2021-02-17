@@ -64,7 +64,7 @@ bot.on('guildCreate', (guild) => {
   bot.channels.cache.get(logsChannel).send(
     new MessageEmbed()
       .setTitle('New Server!')
-      .setThumbnail(`${guild.iconURL})
+      .setThumbnail(`${guild.iconURL}`)
       .addField(
         "Guild Info",
         `${guild.name} (${guild.id}) **Members : ${guild.memberCount}!**`
