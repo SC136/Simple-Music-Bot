@@ -151,7 +151,7 @@ async function vote(bot, msg) {
     .addField('Discord Boats', `[Vote!](https://discord.boats/bot/780838708664467456/vote "Vote On Discord Boats!")`)
     .addField('Bots For Discord', `[Vote!](https://botsfordiscord.com/bot/780838708664467456/vote "Vote On Bots For Discord!")`)
     .addField('Discord Bot List', `[Vote!](https://discordbotlist.com/bots/simple-music-bot/upvote "Vote On Discord Bot List!")`)
-    .addField('DBots', `[Vote!](https://dbots.co/bots/780838708664467456/upvote "Vote On DBots!")`)
+    .addField('DBots', `[Vote!](https://dbots.co/bots/780838708664467456/vote "Vote On DBots!")`)
     .setFooter('Tip : You Can Vote Daily!')
     .setColor("#2F3136")
   await msg.channel.send(vote)
