@@ -87,7 +87,7 @@ bot.on('guildDelete', (guild) => {
       .addField('Owner Info', `${guild.owner} (${guild.ownerID})`)
       .setFooter(`Currently In ${bot.guilds.cache.size} Servers!`)
       .setTimestamp()
-      .setThumbnail(guild.iconURL({ dynamic: true }))
+      .setThumbnail(`${guild.iconURL({ dynamic: true })}`)
       .setColor('#2F3136')
   );
 });
