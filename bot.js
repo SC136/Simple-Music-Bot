@@ -29,7 +29,7 @@ bot.on('message', (msg) => {
   const args = getCommandArgs(prefix, msg.content);
 
   if (commandName === 'play')
-    return play(msg, args);
+    return play(bot, msg, args);
   else if (commandName === 'stop')
     return stop(msg, args);
   else if (commandName === 'join')
