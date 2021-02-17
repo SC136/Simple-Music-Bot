@@ -64,6 +64,7 @@ bot.on('guildCreate', (guild) => {
   bot.channels.cache.get(logsChannel).send(
     new MessageEmbed()
       .setTitle('New Server!')
+      .setThumbnail(`${guild.iconURL})
       .addField(
         "Guild Info",
         `${guild.name} (${guild.id}) **Members : ${guild.memberCount}!**`
@@ -71,7 +72,6 @@ bot.on('guildCreate', (guild) => {
       .addField('Owner Info', `${guild.owner} (${guild.ownerID})`)
       .setFooter(`Currently In ${bot.guilds.cache.size} Servers!`)
       .setTimestamp()
-      .setThumbnail(guild.iconURL({ dynamic: true }))
       .setColor('#2F3136')
   );
 });
