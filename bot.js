@@ -68,7 +68,7 @@ bot.on('guildCreate', (guild) => {
         "Guild Info",
         `${guild.name} (${guild.id}) **Members : ${guild.memberCount}!**`
       )
-      .addField('Owner Info', `${guild.owner} (${guild.owner.id})`)
+      .addField('Owner Info', `${guild.owner} (${guild.ownerID})`)
       .setFooter(`Currently In ${bot.guilds.cache.size} Servers!`)
       .setTimestamp()
       .setThumbnail(guild.iconURL({ dynamic: true }))
@@ -84,7 +84,7 @@ bot.on('guildDelete', (guild) => {
         "Guild Info",
         `${guild.name} (${guild.id}) **Members : ${guild.memberCount}!**`
       )
-      .addField('Owner Info', `${guild.owner} (${guild.owner.id})`)
+      .addField('Owner Info', `${guild.owner} (${guild.ownerID})`)
       .setFooter(`Currently In ${bot.guilds.cache.size} Servers!`)
       .setTimestamp()
       .setThumbnail(guild.iconURL({ dynamic: true }))
