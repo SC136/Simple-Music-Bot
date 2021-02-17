@@ -20,9 +20,9 @@ async function play(msg, ...args) {
   if (!args.length) return msg.reply("Please Give A Song Name!");
   const vc = msg.member.voice.channel;
   const connection = await vc.join()
-  //.then(connection => {
-  //  connection.voice.setSelfDeaf(true);
-  //});
+    .then(connection => {
+      connection.voice.setServerDeaf(true);
+    });
   const video = await findVideo(args.join(' '));
 
   if (video) {
@@ -149,8 +149,9 @@ async function vote(bot, msg) {
     .setTitle('<:SimpleMusicBot:797533617042882612> You Can Vote Simple Music Bot Here In These Lists :')
     .addField('Top.gg', `[Vote!](https://top.gg/bot/780838708664467456/vote "Vote On Top.gg! (Recommended)") (Recommended)`)
     .addField('Discord Boats', `[Vote!](https://discord.boats/bot/780838708664467456/vote "Vote On Discord Boats!")`)
-    .addField('Bots For Discord', `[Vote!](https://botsfordiscord.com/bot/780838708664467456/vote "Vote For Bots For Discord!")`)
+    .addField('Bots For Discord', `[Vote!](https://botsfordiscord.com/bot/780838708664467456/vote "Vote On Bots For Discord!")`)
     .addField('Discord Bot List', `[Vote!](https://discordbotlist.com/bots/simple-music-bot/upvote "Vote On Discord Bot List!")`)
+    .addField('DBots', `[Vote!](https://dbots.co/bots/780838708664467456/upvote "Vote On DBots!")`)
     .setFooter('Tip : You Can Vote Daily!')
     .setColor("#2F3136")
   await msg.channel.send(vote)
@@ -195,8 +196,8 @@ async function botinfo(bot, msg) {
     .addField('Created At :', `\`\`\`${moment.utc(bot.user.createdAt).format("dddd, MMMM Do YYYY")}\`\`\``, true)
     .addField('Joined This Server At :', `\`\`\`${moment.utc(bot.user.joinedAt).format("dddd, MMMM Do YYYY")}\`\`\``, true)
     .addField('Status :', `\`\`\`${bot.user.presence.status}\`\`\``, true)
-    .addField('Discord.js Version :', '```12.5.0```', true)
     .addField('FrameWork :', '```Discord.js```', true)
+    .addField('Discord.js Version :', '```12.5.0```', true)
     .addField('Owner :', '```SC#0600```')
     .addField('Support Server Invite Link :', '```https://discord.gg/Qysc2PXp5e```')
     .addField('Uptime :', `\`\`\`${days}, ${hours}, ${minutes}, And ${seconds}\`\`\``)
@@ -211,15 +212,13 @@ async function topguilds(bot, msg) {
   const guilds = bot.guilds.cache
     .sort((a, b) => b.memberCount - a.memberCount)
     .first(10);
-
   const description = guilds
     .map((guild, index) => {
       return `${index + 1}) ${guild.name}: ${guild.memberCount} members`;
     })
     .join("\n");
-
   await msg.channel.send(
-    new MessageEmbed().setTitle(`${bot.user.username}'s Top Servers`).setDescription(description)
+    new MessageEmbed().setTitle(`<:SimpleMusicBot:797533617042882612> ${bot.user.username}'s Top Servers`).setDescription(description).setColor('#2F3136').setTimestamp()
   )
 }
 
