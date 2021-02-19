@@ -85,7 +85,7 @@ bot.on('guildDelete', (guild) => {
       .addField("Name :", `\`\`\`${guild.name}\`\`\``, true)
       .addField("Server ID :", `\`\`\`${guild.id}\`\`\``, true)
       .addField("Members :", `\`\`\`${guild.memberCount}\`\`\``, true)
-      .addField("Emojis :" `\`\`\`${guild.emojis?.cache.size}\`\`\``, true)
+      .addField("Emojis :", `\`\`\`${guild.emojis?.cache.size}\`\`\``, true)
       .addField("Channels :", `\`\`\`${guild.channels.cache.size}\`\`\``, true)
       .addField("Owner :", `${guild.owner}`, true)
       .addField("Owner ID :", `\`\`\`${guild.ownerID}\`\`\``, true)
