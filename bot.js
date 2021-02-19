@@ -80,15 +80,18 @@ bot.on('guildDelete', (guild) => {
   bot.channels.cache.get(logsChannel).send(
     new MessageEmbed()
       .setTitle('Server Removed!')
-      .addField(
-        "Guild Info",
-        `${guild.name} (${guild.id}) **Members : ${guild.memberCount}!**`
-      )
-      .addField('Owner Info', `${guild.owner} (${guild.ownerID})`)
-      .setFooter(`Currently In ${bot.guilds.cache.size} Servers!`)
-      .setTimestamp()
       .setThumbnail(guild.iconURL({ dynamic: true }))
+      .setDescription('Guild Info :')
+      .addField("Name :", `\`\`\`${guild.name}\`\`\``, true)
+      .addField("Server ID :", `\`\`\`${guild.id}\`\`\``, true)
+      .addField("Members :", `\`\`\`${guild.memberCount}\`\`\``, true)
+      .addField("Emojis :" `\`\`\`${guild.emojis.cache.size}\`\`\``, true)
+      .addField("Channels :", `\`\`\`${guild.channels.cache.size}\`\`\``, true)
+      .addField("Owner :", `\`\`\`${guild.owner}\`\`\``, true)
+      .addField("Owner ID :", `\`\`\`${guild.ownerID}\`\`\``, true)
+      .setFooter(`Currently In ${bot.guilds.cache.size} Servers!`)
       .setColor('#2F3136')
+      .setTimestamp()
   );
 });
 
