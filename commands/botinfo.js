@@ -11,7 +11,7 @@ module.exports = {
         const seconds = (d.seconds() == 1) ? `${d.seconds()} Second` : `${d.seconds()} Seconds`;
         const date = moment().subtract(d, 'ms').format('dddd, MMMM Do YYYY');
         const { totalMemMb, usedMemMb } = await mem.info();
-        let member = msg.guild.me
+        let member = message.guild.me
         const embed = new MessageEmbed()
             .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot\'s Info/Stats')
             //.setThumbnail(`${bot.user.displayAvatarURL()}`)
