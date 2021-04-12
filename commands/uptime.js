@@ -3,7 +3,7 @@ const moment = require('moment');
 module.exports = {
     name: 'uptime',
     run: async (message, args, client) => {
-        const d = moment.duration(msg.client.uptime);
+        const d = moment.duration(client.uptime);
         const days = (d.days() == 1) ? `${d.days()} Day` : `${d.days()} Days`;
         const hours = (d.hours() == 1) ? `${d.hours()} Hour` : `${d.hours()} Hours`;
         const minutes = (d.minutes() == 1) ? `${d.minutes()} Minute` : `${d.minutes()} Minutes`;
