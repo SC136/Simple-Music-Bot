@@ -9,7 +9,7 @@ module.exports = {
     if (!player) return message.reply(
       new MessageEmbed()
         .setTitle('There Is No Music Playing In This Server!')
-        .setFooter(`Requested By : ${msg.author.tag}`, msg.author.avatarURL({ "format": "png" }))
+        .setFooter(`Requested By : ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
         .setColor('#2F3136')
         .setTimestamp()
     );
@@ -19,7 +19,7 @@ module.exports = {
     if (!channel) return message.reply(
       new MessageEmbed()
         .setTitle('You Need To Join A VC!')
-        .setFooter(`Requested By: ${msg.author.tag}`, msg.author.avatarURL({ "format": "png" }))
+        .setFooter(`Requested By: ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
         .setColor('#2F3136')
         .setTimestamp()
     );
@@ -27,7 +27,7 @@ module.exports = {
     if (channel.id !== player.voiceChannel) return message.reply(
       new MessageEmbed()
         .setTitle('You Are Not In The Same VC As Me!')
-        .setFooter(`Requested By : ${msg.author.tag}`, msg.author.avatarURL({ "format": "png" }))
+        .setFooter(`Requested By : ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
         .setColor('#2F3136')
         .setTimestamp()
     );

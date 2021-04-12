@@ -22,7 +22,7 @@ module.exports = function (client) {
         .on("trackStart", (player, track) => {
             const channel = client.channels.cache.get(player.textChannel);
             channel.send(
-                new MessageEmbed().setTitle('Now Playing...').setDescription(`\`\`\`prolog\n${video.title}\`\`\``).setFooter(msg.author.tag, msg.author.displayAvatarURL({ dynamic: true })).setTimestamp().setColor('#2F3136')
+                new MessageEmbed().setTitle('Now Playing...').setDescription(`\`\`\`prolog\n${video.title}\`\`\``).setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true })).setTimestamp().setColor('#2F3136')
             );
         })
         .on("trackEnd", (player) => {

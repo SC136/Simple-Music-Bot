@@ -9,7 +9,7 @@ module.exports = {
     if (!player) return message.reply(
       new MessageEmbed()
         .setTitle('There Is No Music Playing In This Server!')
-        .setFooter(`Requested By : ${msg.author.tag}`, msg.author.avatarURL({ "format": "png" }))
+        .setFooter(`Requested By : ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
         .setColor('#2F3136')
         .setTimestamp()
     );

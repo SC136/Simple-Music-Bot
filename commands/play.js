@@ -9,7 +9,7 @@ module.exports = {
     if (!channel) return message.reply(
       new MessageEmbed()
         .setTitle('You Need To Join A VC!')
-        .setFooter(`Requested By: ${msg.author.tag}`, msg.author.avatarURL({ "format": "png" }))
+        .setFooter(`Requested By: ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
         .setColor('#2F3136')
         .setTimestamp()
     );
