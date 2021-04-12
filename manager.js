@@ -25,7 +25,7 @@ module.exports = function (client) {
                 new MessageEmbed()
                     .setTitle('Now Playing...')
                     .setDescription(`\`\`\`prolog\n${track.title}\`\`\``)
-                    .setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+                    .setFooter(`Requested By ${track.requester.tag}`)
                     .setColor('#2F3136')
                     .setTimestamp()
             );
