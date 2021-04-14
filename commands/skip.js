@@ -8,7 +8,7 @@ module.exports = {
 
     if (!player) return message.reply(
       new MessageEmbed()
-        .setTitle('There Is No Music Playing In This Server!')
+        .setDescription('```There Is No Music Playing In This Server!```')
         .setFooter(`Requested By : ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
         .setColor('#2F3136')
         .setTimestamp()
@@ -18,7 +18,7 @@ module.exports = {
 
     if (!channel) return message.reply(
       new MessageEmbed()
-        .setTitle('You Need To Join A VC!')
+        .setDescription('```You Need To Join A VC!```')
         .setFooter(`Requested By: ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
         .setColor('#2F3136')
         .setTimestamp()
@@ -26,7 +26,7 @@ module.exports = {
 
     if (channel.id !== player.voiceChannel) return message.reply(
       new MessageEmbed()
-        .setTitle('You Are Not In The Same VC As Me!')
+        .setDescription('```You Are Not In The Same VC As Me!```')
         .setFooter(`Requested By : ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
         .setColor('#2F3136')
         .setTimestamp()
@@ -34,7 +34,7 @@ module.exports = {
 
     if (!player.queue.current) return message.reply(
       new MessageEmbed()
-        .setTitle('There Is No Music Playing!')
+        .setDescription('```There Is No Music Playing!```')
         .setColor('#2F3136')
     )
 
@@ -43,7 +43,7 @@ module.exports = {
     player.stop();
     return message.reply(
       new MessageEmbed()
-        .setTitle(`${title} Was Skipped.`)
+        .setDescription(`\`\`\`${title} Was Skipped.\`\`\``)
         .setColor('#2F3136')
     )
   }

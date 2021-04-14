@@ -8,7 +8,7 @@ module.exports = {
 
     if (!channel) return message.reply(
       new MessageEmbed()
-        .setTitle('You Need To Join A VC!')
+        .setDescription('```You Need To Join A VC!```')
         .setFooter(`Requested By: ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
         .setColor('#2F3136')
         .setTimestamp()
@@ -16,7 +16,7 @@ module.exports = {
 
     if (!args.length) return message.reply(
       new MessageEmbed()
-        .setTitle('You Need To Give Me A Song Name Or The Link Of The Song You Want To Play!')
+        .setDescription('```You Need To Give Me A Song Name Or The Link Of The Song You Want To Play!```')
         .setColor('#2F3136')
     );
 
@@ -44,7 +44,13 @@ module.exports = {
 
     // Adds the first track to the queue.
     player.queue.add(res.tracks[0]);
-    message.channel.send(`Enqueuing Track ${res.tracks[0].title}.`);
+    message.channel.send(
+      new MessageEmbed()
+      .setDescription(`\`\`\`Enqueuing Track : ${res.tracks[0].title}.\`\`\``)
+      .setFooter(`Requested By: ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
+      .setTimestamp()
+      .setColor('#2F3136')
+      );
 
     // Plays the player (plays the first track in the queue).
     // The if statement is needed else it will play the current track again

@@ -8,7 +8,7 @@ module.exports = {
 
     if (!player) return message.reply(
       new MessageEmbed()
-        .setTitle('There Is No Music Playing In This Server!')
+        .setDescription('```There Is No Music Playing In This Server!```')
         .setFooter(`Requested By : ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
         .setColor('#2F3136')
         .setTimestamp()
@@ -17,7 +17,8 @@ module.exports = {
     const queue = player.queue;
     
     const embed = new MessageEmbed()
-      .setAuthor(`Queue for ${message.guild.name}`);
+      .setAuthor(`Queue For ${message.guild.name}`);
+      .setColor('#2F3136')
 
     // change for the amount of tracks per page
     const multiple = 10;
@@ -30,7 +31,7 @@ module.exports = {
 
     if (queue.current) embed.addField("Current", `[${queue.current.title}](${queue.current.uri})`);
 
-    if (!tracks.length) embed.setDescription(`No tracks in ${page > 1 ? `page ${page}` : "the queue"}.`);
+    if (!tracks.length) embed.setDescription(`No Tracks In ${page > 1 ? `page ${page}` : "the queue"}.`);
     else embed.setDescription(tracks.map((track, i) => `${start + (++i)} - [${track.title}](${track.uri})`).join("\n"));
 
     const maxPages = Math.ceil(queue.length / multiple);

@@ -8,7 +8,7 @@ module.exports = {
 
     if (!player) return message.reply(
       new MessageEmbed()
-        .setTitle('There Is No Music Playing In This Server!')
+        .setDescription('```There Is No Music Playing In This Server!```')
         .setFooter(`Requested By : ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
         .setColor('#2F3136')
         .setTimestamp()
@@ -18,7 +18,7 @@ module.exports = {
 
     if (!channel) return message.reply(
       new MessageEmbed()
-        .setTitle('You Need To Join A VC!')
+        .setDescription('```You Need To Join A VC!```')
         .setFooter(`Requested By: ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
         .setColor('#2F3136')
         .setTimestamp()
@@ -26,7 +26,7 @@ module.exports = {
 
     if (channel.id !== player.voiceChannel) return message.reply(
       new MessageEmbed()
-        .setTitle('You Are Not In The Same VC As Me!')
+        .setDescription('```You Are Not In The Same VC As Me!```')
         .setFooter(`Requested By : ${message.author.tag}`, message.author.avatarURL({ "format": "png" }))
         .setColor('#2F3136')
         .setTimestamp()
@@ -34,14 +34,14 @@ module.exports = {
 
     if (!player.paused) return message.reply(
       new MessageEmbed()
-        .setTitle('The Player Is Already Resumed!')
+        .setDescription('```The Player Is Already Resumed!```')
         .setColor('#2F3136')
     );
 
     player.pause(false);
     return message.reply(
       new MessageEmbed()
-        .setTitle('Resumed The Player!')
+        .setDescription('```Resumed The Player!```')
         .setColor('#2F3136')
     );
   }
