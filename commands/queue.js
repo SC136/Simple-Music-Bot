@@ -17,8 +17,8 @@ module.exports = {
     const queue = player.queue;
     
     const embed = new MessageEmbed()
-      .setAuthor(`Queue For ${message.guild.name}`);
-      .setColor('#2F3136')
+      .setAuthor(`Queue For ${message.guild.name}`)
+      .setColor('#2F3136');
 
     // change for the amount of tracks per page
     const multiple = 10;
