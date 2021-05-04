@@ -4,9 +4,9 @@ const { MessageEmbed } = require('discord.js');
 module.exports = function (client) {
     return new Manager({
         nodes: [{
-            host: "lavalink.sudhanplayz.live",
-            port: 1234,
-            password: 'CodingWithSudhan',
+            host: "lava.link",
+            port: 80,
+            password: 'SimpleMusicBot',
             retryDelay: 5000,
         }],
         autoPlay: true,
