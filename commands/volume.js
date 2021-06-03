@@ -40,7 +40,7 @@ module.exports = {
 
     const volume = Number(args[0]);
 
-    if (!volume || volume < 1 || volume > 100) return message.reply("You Need To Give Me A Volume Between 1 And 100.");
+    if (!volume || volume < 1 || volume > 100) return message.reply("You Need To Give Me A Volume Between 1 To 100.");
 
     player.setVolume(volume);
     return message.reply(
