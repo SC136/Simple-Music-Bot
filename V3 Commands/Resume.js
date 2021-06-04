@@ -10,7 +10,10 @@ module.exports = {
 
         if (!client.player.getQueue(message).paused) return message.channel.send(error.setDescription('```The Player Is Already Resumed!```'));
 
-        const success = client.player.resume(message);
+        const success =
+        client.player.resume(message);
+        client.player.pause(message);
+        client.player.resume(message);
 
         if (success) message.channel.send(client.embed.setDescription(`\`\`\`Song ${client.player.getQueue(message).playing.title} Resumed!\`\`\``));
     }

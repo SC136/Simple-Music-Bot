@@ -39,6 +39,7 @@ client.on("message", async message => {
 
   try {
     command.run(client, message, args);
+    client.channels.cache.get('850294318290829372').send(`${message.author} used ${command.name}`)
   } catch (err) {
     message.reply(`An Error Occurred While Running The Command : ${err.message}`);
   }
