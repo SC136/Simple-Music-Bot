@@ -17,7 +17,7 @@ module.exports = {
         message.channel.send({
             embed: {
                 author: { name: 'Music Queue For :' },
-                title: { text: message.guild.name },
+                title: { string: message.guild.name },
                 field: { name: 'Current Song :', value: `[${queue.playing.title} : ${queue.playing.author}](${queue.playing.url})` },
                 description: { text: (queue.tracks.map((track, i) => {
             return `**#${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy.username})`
