@@ -16,14 +16,17 @@ for (const file of files) {
   const command = require(`./V3 Commands/${file}`);
   client.commands.set(command.name, command);
 }
+client.embed = require('./Embed')(MessageEmbed);
 
-const player = new Player(client);
+const player = new Player(client, leaveOnEndCooldown: 60000);
 client.player = player;
 
-client.player.on("trackStart", (message, track) => message.channel.send(`Now playing ${track.title}...`))
+client.player
+  .on("trackStart", (message, track) => message.channel.send(client.embed.setAuthor('Now Playing :').setDescription(`\`\`\`prolog\n${track.title}\`\`\``).setFooter(`Requested By ${track.requestedBy.username}`)))
+  .on("trackAdd", (message, queue, track) => message.channel.send(client.embed.setAuthor('Song Added :').setDescription(`\`\`\`prolog\n${track.title}\`\`\``).setFooter(`Requested By ${track.requestedBy.username}`)))
+  .on("queueEnd", (message, queue) => message.channel.send(client.embed.setDescription('```The Queue Has Ended & I Have Left The VC!```')))
 
 client.error = require('./Error')(MessageEmbed);
-client.embed = require('./Embed')(MessageEmbed);
 
 client.once("ready", () => {
   console.log(`Bot Has Logged in And Is Playing Music! \nSimple Music Bot Is In ${client.guilds.cache.size} Servers! \n${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} People Are Using Simple Music Bot! \nTotal Channels : ${client.channels.cache.size}!`);
@@ -39,10 +42,10 @@ client.on("message", async message => {
 
   try {
     command.run(client, message, args)
-    client.channels.cache.get('850294318290829372').send(`Someone Used \`${command.name}\` Command In ${message.guild.name}!`)
+    client.channels.cache.get('850294318290829372').send(`Someone Used \`${command.name}\` Command In **${message.guild.name}**!`)
   } catch (err) {
     message.reply(`An Error Occurred While Running The Command : ${err.message}`)
-    client.channels.cache.get('850294318290829372').send(`An Error Occured While Executing The \`${command.name}\` Command In ${message.guild.name}!`)
+    client.channels.cache.get('850294318290829372').send(`An Error Occured While Executing The \`${command.name}\` Command In **${message.guild.name}!**`)
   }
 });
 
