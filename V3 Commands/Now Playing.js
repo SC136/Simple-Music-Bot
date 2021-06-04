@@ -14,7 +14,7 @@ module.exports = {
         message.channel.send({
             embed: {
                 color: '#2F3136',
-                author: { name: Now Playing : },
+                author: { name: 'Now Playing :' },
                 title: { track.title },
                 footer: { text: 'Simple Music Bot V3' },
                 thumbnail: { url: track.thumbnail },
