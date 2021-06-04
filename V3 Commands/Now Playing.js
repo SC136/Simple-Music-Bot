@@ -15,7 +15,7 @@ module.exports = {
             embed: {
                 color: '#2F3136',
                 author: { name: 'Now Playing :' },
-                title: { `${track.title}` },
+                title: track.title,
                 footer: { text: 'Simple Music Bot V3' },
                 thumbnail: { url: track.thumbnail },
                 timestamp: new Date(),
