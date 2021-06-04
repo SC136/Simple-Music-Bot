@@ -18,7 +18,7 @@ for (const file of files) {
 }
 client.embed = require('./Embed')(MessageEmbed);
 
-const player = new Player(client, leaveOnEndCooldown: 60000);
+const player = new Player(client, { leaveOnEndCooldown: 60000 });
 client.player = player;
 
 client.player
