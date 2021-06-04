@@ -20,10 +20,10 @@ module.exports = {
                 author: { name: 'Music Queue For :' },
                 title: message.guild.name,
                 fields: [
-                { name: 'Current Song :', value: `[•](${queue.playing.url}) ${queue.playing.title} : ${queue.playing.author}` }
+                { name: 'Current Song :', value: `[•](${queue.playing.url}) \`\`\`${queue.playing.title} : ${queue.playing.author}\`\`\`` }
                 ],
                 description: (queue.tracks.map((track, i) => {
-            return `**\`${i + 1}\`** : ${track.title} | ${track.author} (Requested By : ${track.requestedBy.username})`
+            return `**\`${i + 1}\`** : [${track.title} | ${track.author}](${track.url}) (Requested By : ${track.requestedBy.username})`
         }).slice(0, 5).join('\n') + `\n\n${queue.tracks.length > 5 ? `And **${queue.tracks.length - 5}** Other Song(s)...` : `In The Playlist : **${queue.tracks.length}** Song(s)...`}`)
             }
         })

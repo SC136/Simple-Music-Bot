@@ -38,10 +38,11 @@ client.on("message", async message => {
   if (!command) return;
 
   try {
-    command.run(client, message, args);
-    client.channels.cache.get('850294318290829372').send(`${message.author} used ${command.name}`)
+    command.run(client, message, args)
+    client.channels.cache.get('850294318290829372').send(`Someone Used \`${command.name}\` Command In ${message.guild.name}!`)
   } catch (err) {
-    message.reply(`An Error Occurred While Running The Command : ${err.message}`);
+    message.reply(`An Error Occurred While Running The Command : ${err.message}`)
+    client.channels.cache.get('850294318290829372').send(`An Error Occured While Executing The \`${command.name}\` Command In ${message.guild.name}!`)
   }
 });
 
@@ -85,10 +86,8 @@ client.on('guildDelete', (guild) => {
 });
 
 const ap = AutoPoster(process.env.TOPGG_TOKEN, client)
-
 ap.on('posted', () => {
   console.log('Posted Stats to Top.gg')
-});
-
-client.login(process.env.DISCORD_BOT_TOKEN);
-// client.login('NzgwNjgyMjAzNzYyOTE3NDA3.X7yo9Q.B6UJ6MdOWMiwiS7G_zV1TIZmOV8');
+})
+client.login(process.env.DISCORD_BOT_TOKEN)
+// client.login('NzgwNjgyMjAzNzYyOTE3NDA3.X7yo9Q.B6UJ6MdOWMiwiS7G_zV1TIZmOV8')
