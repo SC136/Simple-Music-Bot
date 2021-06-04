@@ -17,16 +17,19 @@ for (const file of files) {
   client.commands.set(command.name, command);
 }
 client.embed = require('./Embed')(MessageEmbed);
+client.error = require('./Error')(MessageEmbed);
 
-const player = new Player(client, { leaveOnEndCooldown: 60000 });
+const player = new Player(client, { leaveOnEndCooldown: 60000, leaveOnEmptyCooldown: 60000 });
 client.player = player;
 
 client.player
   .on("trackStart", (message, track) => message.channel.send(client.embed.setAuthor('Now Playing :').setDescription(`\`\`\`prolog\n${track.title}\`\`\``).setFooter(`Requested By ${track.requestedBy.username}`)))
   .on("trackAdd", (message, queue, track) => message.channel.send(client.embed.setAuthor('Song Added :').setDescription(`\`\`\`prolog\n${track.title}\`\`\``).setFooter(`Requested By ${track.requestedBy.username}`)))
-  .on("queueEnd", (message, queue) => message.channel.send(client.embed.setDescription('```The Queue Has Ended & I Have Left The VC!```')))
-
-client.error = require('./Error')(MessageEmbed);
+  .on("queueEnd", (message, queue) => message.channel.send(client.embed.setDescription('```The Queue Has Ended, I Will Be In The VC For 1 More Minute!```')))
+  .on("noResults", (message, query) => message.channel.send(client.error.setDescription(`**No Songs Found For Query :**\n\`\`\`${query}\`\`\``)))
+  .on("botDisconect", (message) => message.channel.send(client.embed.setDescription('```VC Disconnected!```')))
+  .on("channelEmpty", (message) => message.channel.send(client.embed.setDescription('```The VC Is Empty!```')))
+  .on("error", (error, message) => message.channel.send(client.error.setDescription(`\`\`\`${error}\`\`\``)))
 
 client.once("ready", () => {
   console.log(`Bot Has Logged in And Is Playing Music! \nSimple Music Bot Is In ${client.guilds.cache.size} Servers! \n${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)} People Are Using Simple Music Bot! \nTotal Channels : ${client.channels.cache.size}!`);
