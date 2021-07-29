@@ -23,8 +23,8 @@ const player = new Player(client, { leaveOnEndCooldown: 60000, leaveOnEmptyCoold
 client.player = player;
 
 client.player
-  .on("trackStart", (message, track) => message.channel.send(client.embed.setAuthor('Now Playing :').setDescription(`\`\`\`prolog\n${track.title}\`\`\``).setFooter(`Requested By ${track.requestedBy.username}`)))
-  .on("trackAdd", (message, queue, track) => message.channel.send(client.embed.setAuthor('Song Added :').setDescription(`\`\`\`prolog\n${track.title}\`\`\``).setFooter(`Requested By ${track.requestedBy.username}`)))
+  .on("trackStart", (message, track) => message.channel.send(client.embed.setDescription(`**Now Playing :**\n\`\`\`prolog\n${track.title}\`\`\``).setFooter(`Requested By ${track.requestedBy.username}`)))
+  .on("trackAdd", (message, queue, track) => message.channel.send(client.embed.setDescription(`**Song Added :**\`\`\`prolog\n${track.title}\`\`\``).setFooter(`Requested By ${track.requestedBy.username}`)))
   .on("queueEnd", (message, queue) => message.channel.send(client.embed.setDescription('```The Queue Has Ended, I Will Be In The VC For 1 More Minute!```')))
   .on("noResults", (message, query) => message.channel.send(client.error.setDescription(`**No Songs Found For Query :**\n\`\`\`${query}\`\`\``)))
   .on("botDisconect", (message) => message.channel.send(client.embed.setDescription('```VC Disconnected!```')))
