@@ -8,8 +8,7 @@ module.exports = {
             .setDescription('The Total Number Of \nUsers That Are In The \nServers That The Bot Is In')
             .setThumbnail(`${client.user.displayAvatarURL()}`)
             .addField('Total Users :', `\`\`\`${client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)}\`\`\``)
-            .setColor("#2F3136")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-}
+            .setColor("#2F3136");
+        message.channel.send({ embeds: [embed] })
+    },
+};

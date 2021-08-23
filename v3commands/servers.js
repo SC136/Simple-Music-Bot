@@ -8,8 +8,7 @@ module.exports = {
             .setDescription('The Total Number Of \nDiscord Servers That The \nBot Is In')
             .setThumbnail(`${client.user.displayAvatarURL()}`)
             .addField('Total Servers :', `\`\`\`${client.guilds.cache.size}\`\`\``)
-            .setColor("#2F3136")
-            .setTimestamp()
-        message.channel.send(embed)
-    }
-}
+            .setColor("#2F3136");
+        message.channel.send({ embeds: [embed] })
+    },
+};

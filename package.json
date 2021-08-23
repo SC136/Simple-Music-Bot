@@ -2,18 +2,18 @@
   "name": "simple-music-bot",
   "version": "3.0.0",
   "description": "Simply Simple Music Bot!",
-  "main": "index.js",
+  "main": "v3.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node V3.js"
+    "start": "node v3.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.5.3",
-    "discord-player": "^4.1.4",
-    "discord.js": "^12.5.3",
+    "@discordjs/opus": "^0.6.0",
+    "discord-player": "^5.0.2",
+    "discord.js": "^13.1.0",
     "dotenv": "^8.6.0",
     "erela.js": "^2.3.3",
     "ffmpeg-static": "^4.4.0",

@@ -2,32 +2,30 @@ const { MessageEmbed } = require('discord.js');
 const { inspect } = require('util');
 module.exports = {
     name: 'eval',
+    description: 'Eval The Given Code!',
     run: async (client, message, args) => {
-        if (message.author.id !== '594504468931018752') return message.channel.send('This is an owner only command. You cannot use this, sadly.');
+        if (message.author.id !== '594504468931018752') return client.error(message, `Only The Developer Of Simple Music Bot Can Use This Command!`);
         const command = args.join(" ");
-        if (!command) return message.channel.send('You need to enter something for me to eval it!');
+        if (!command) return client.error(message, `You Need To Enter Something For Simple Music Bot To Eval It!`)
+        let queue = client.player.getQueue(message.guild.id);
         try {
             const evaled = eval(command)
-
             var embed = new MessageEmbed()
-                .setColor(client.color)
                 .setTitle('Evaluated')
                 .addFields(
                     { name: 'To Eval', value: `\`\`\`${command}\`\`\`` },
                     { name: 'Evaled', value: `\`\`\`JS\n${inspect(evaled, { depth: 0 })}\`\`\`` },
                     { name: 'Type', value: `\`\`\`${typeof (evaled)}\`\`\`` }
                 )
-                .setTimestamp()
-            message.channel.send(embed);
+                .setColor('#2F3136')
+            message.reply({ embeds: [embed] });
         } catch (error) {
             var embed = new MessageEmbed()
-                .setColor(client.color)
-                .setTitle('Error')
                 .addFields(
-                    { name: 'Error', value: `${error}` }
+                    { name: 'Error :', value: `\`\`\`JS\n${error}\`\`\`` }
                 )
-                .setTimestamp()
-            message.channel.send(embed);
-        }
-    }
-}
+                .setColor('#2F3136')
+            message.reply({ embeds: [embed] });
+        };
+    },
+};

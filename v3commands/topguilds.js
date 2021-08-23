@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed } = require(`discord.js`);
 
 module.exports = {
     name: 'topguilds',
@@ -13,8 +13,10 @@ module.exports = {
                 return `${index + 1}) ${guild.name}: ${guild.memberCount} members`;
             })
             .join("\n");
-        message.channel.send(
-            new MessageEmbed().setTitle(`<:SimpleMusicBot:797533617042882612> ${client.user.username}'s Top Servers`).setDescription(description).setColor('#2F3136').setTimestamp()
-        )
-    }
-}
+        message.reply({
+            embeds: [
+            new MessageEmbed().setTitle(`<:SimpleMusicBot:797533617042882612> ${client.user.username}'s Top 10 Servers`).setDescription(description).setColor('#2F3136')
+            ]
+        });
+    },
+};

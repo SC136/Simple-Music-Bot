@@ -8,6 +8,6 @@ module.exports = {
             .setThumbnail(`${client.user.displayAvatarURL()}`)
             .setDescription('Click [Here](https://discord.gg/Qysc2PXp5e) To Join The Support Server')
             .setColor("#2F3136")
-        message.channel.send(embed)
+        message.channel.send({ embeds: [embed] })
     }
 }
