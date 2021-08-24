@@ -13,7 +13,7 @@ const files = readdirSync("./v3commands")
 for (const file of files) {
   const command = require(`./v3commands/${file}`);
   client.commands.set(command.name, command);
-}
+};
 client.embed = require('./embed');
 client.error = require('./error');
 client.check = require(`./check`);
@@ -83,9 +83,9 @@ client.on('guildDelete', (guild) => {
       .setTimestamp()
   );
 });
-// const ap = AutoPoster(process.env.TOPGG_TOKEN, client)
-// ap.on('posted', () => {
-//   console.log('Posted Stats to Top.gg')
-// })
+const ap = AutoPoster(process.env.TOPGG_TOKEN, client);
+ap.on('posted', () => {
+  console.log('Posted Stats to Top.gg')
+});
 client.login(process.env.DISCORD_BOT_TOKEN)
 // client.login('NzgwNjgyMjAzNzYyOTE3NDA3.X7yo9Q.B6UJ6MdOWMiwiS7G_zV1TIZmOV8') // for testing purposes...
