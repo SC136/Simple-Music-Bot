@@ -12,7 +12,7 @@ module.exports = {
         const seconds = (d.seconds() == 1) ? `${d.seconds()} Second` : `${d.seconds()} Seconds`;
         const date = moment().subtract(d, 'ms').format('dddd, MMMM Do YYYY');
         const embed = new MessageEmbed()
-            .setDescription(`**<:SimpleMusicBot:797533617042882612> Simple Music Bot Uptime :**\`\`\`prolog\n${days}, ${hours}, ${minutes}, And ${seconds}\`\`\`\n**📅 Date Launched :**\`\`\`prolog\n${date}\`\`\``)
+            .setDescription(`**${client.emoji} Simple Music Bot Uptime :**\`\`\`prolog\n${days}, ${hours}, ${minutes}, And ${seconds}\`\`\`\n**📅 Date Launched :**\`\`\`prolog\n${date}\`\`\``)
             .setColor("#2F3136");
             // .setColor(msg.guild.me.displayHexColor);
         message.reply({ embeds: [embed] })

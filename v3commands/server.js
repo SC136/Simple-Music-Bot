@@ -4,10 +4,10 @@ module.exports = {
     name: 'server',
     run: async (client, message) => {
         const embed = new MessageEmbed()
-            .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot Support Server Invite Link :')
-            .setThumbnail(`${client.user.displayAvatarURL()}`)
+            .setTitle(`${client.emoji} Simple Music Bot Support Server Invite Link :`)
+            .setThumbnail(`${client.user.displayAvatarURL({ format: `png`, size: 4096 })}`)
             .setDescription('Click [Here](https://discord.gg/Qysc2PXp5e) To Join The Support Server')
-            .setColor("#2F3136")
-        message.channel.send({ embeds: [embed] })
-    }
-}
+            .setColor("#2F3136");
+        message.channel.send({ embeds: [embed] });
+    },
+};

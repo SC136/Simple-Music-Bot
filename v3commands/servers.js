@@ -4,11 +4,11 @@ module.exports = {
     name: 'servers',
     run: async (client, message) => {
         const embed = new MessageEmbed()
-            .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot')
+            .setTitle(`${client.emoji} Simple Music Bot`)
             .setDescription('The Total Number Of \nDiscord Servers That The \nBot Is In')
-            .setThumbnail(`${client.user.displayAvatarURL()}`)
+            .setThumbnail(`${client.user.displayAvatarURL({ format: `png`, size: 4096 })}`)
             .addField('Total Servers :', `\`\`\`${client.guilds.cache.size}\`\`\``)
             .setColor("#2F3136");
-        message.channel.send({ embeds: [embed] })
+        message.channel.send({ embeds: [embed] });
     },
 };

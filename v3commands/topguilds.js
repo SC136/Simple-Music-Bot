@@ -15,7 +15,7 @@ module.exports = {
             .join("\n");
         message.reply({
             embeds: [
-            new MessageEmbed().setTitle(`<:SimpleMusicBot:797533617042882612> ${client.user.username}'s Top 10 Servers`).setDescription(description).setColor('#2F3136')
+            new MessageEmbed().setTitle(`${client.emoji} ${client.user.username}'s Top 10 Servers`).setDescription(description).setColor('#2F3136')
             ]
         });
     },

@@ -6,7 +6,7 @@ module.exports = {
     description: 'The Help Command!',
     run: async (client, message) => {
         const embed = new MessageEmbed()
-            .setTitle('<:SimpleMusicBot:797533617042882612> Simple Music Bot Help Command')
+            .setTitle(`${client.emoji} Simple Music Bot Help Command`)
             .setThumbnail(`${client.user.displayAvatarURL()}`)
             .setDescription('```Simply Simple Music Bot!```')
             .addField('.play', '```.play <songname> (Simply Plays A Song In The VC You Are In```', true)

@@ -13,8 +13,8 @@ module.exports = {
             var embed = new MessageEmbed()
                 .setTitle('Evaluated')
                 .addFields(
-                    { name: 'To Eval', value: `\`\`\`${command}\`\`\`` },
-                    { name: 'Evaled', value: `\`\`\`JS\n${inspect(evaled, { depth: 0 })}\`\`\`` },
+                    { name: 'To Eval', value: `\`\`\`${command.length > 1024 ? 'Too Large To Display' : command}\`\`\`` },
+                    { name: 'Evaled', value: `\`\`\`JS\n${inspect(evaled, { depth: 0 }).length > 1024 ? `Too Large To Display` : inspect(evaled, { depth: 0 })}\`\`\`` },
                     { name: 'Type', value: `\`\`\`${typeof (evaled)}\`\`\`` }
                 )
                 .setColor('#2F3136')

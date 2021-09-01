@@ -9,7 +9,6 @@ client.commands = new Collection();
 client.preifx = '.';
 const files = readdirSync("./v3commands")
   .filter(file => file.endsWith(".js"));
-
 for (const file of files) {
   const command = require(`./v3commands/${file}`);
   client.commands.set(command.name, command);
@@ -17,12 +16,13 @@ for (const file of files) {
 client.embed = require('./embed');
 client.error = require('./error');
 client.check = require(`./check`);
+client.emoji = `<:SimpleMusicBotCircular:881970577873731654>`
 const player = new Player(client, { leaveOnEnd: false, leaveOnStop: false, leaveOnEmptyCooldown: 60000 });
 client.player = player;
 client.player
-  .on("trackStart", (queue, track) => queue.metadata.channel.send({ embeds: [client.embed(`**Now Playing :**\n\`\`\`fix\n${track.title}\`\`\``)] }))
-  .on("trackAdd", (queue, track) => queue.metadata.channel.send({ embeds: [client.embed(`**Song Added :**\`\`\`fix\n${track.title}\`\`\``)] }))
-  .on("queueEnd", (queue) => queue.metadata.channel.send({ embeds: [client.embed('```The Queue Has Ended!```')] }))
+  .on("trackStart", (queue, track) => queue.metadata.channel.send({ embeds: [client.embed(`**Now Playing :**\n\`\`\`fix\n${track.title}\`\`\``).setFooter(`Requested By ${track.requestedBy.tag}`, track.requestedBy.avatarURL({ format: 'png', size: 4096, dynamic: true }))] }))
+  .on("trackAdd", (queue, track) => queue.metadata.channel.send({ embeds: [client.embed(`**Song Added :**\`\`\`fix\n${track.title}\`\`\``).setFooter(`Requested By ${track.requestedBy.tag}`, track.requestedBy.avatarURL({ format: 'png', size: 4096, dynamic: true }))] }))
+  .on("queueEnd", (queue) => queue.metadata.channel.send({ embeds: [client.embed('```The Queue Has Ended!```').setFooter(`Requested By ${track.requestedBy.tag}`, track.requestedBy.avatarURL({ format: 'png', size: 4096, dynamic: true }))] }))
   .on("botDisconect", (queue) => queue.metadata.channel.send({ embeds: [client.embed('```VC Disconnected!```')] }))
   .on("channelEmpty", (query) => query.metadata.channel.send({ embeds: [client.embed('```The VC Is Empty!```')] }))
   .on("error", (queue, error) => queue.metadata.channel.send({ embeds: [client.embed(`\`\`\`diff\n- ${error}\`\`\``)] }))
@@ -49,7 +49,8 @@ client.on(`messageCreate`, message => {
 });
 const logsChannel = '811499611285225492';
 client.on('guildCreate', (guild) => {
-  client.channels.cache.get(logsChannel).send(
+  client.channels.cache.get(logsChannel).send({
+    embeds: [
     new MessageEmbed()
       .setTitle('New Server!')
       .setThumbnail(guild.iconURL({ dynamic: true }))
@@ -63,10 +64,12 @@ client.on('guildCreate', (guild) => {
       .setFooter(`Currently In ${client.guilds.cache.size} Servers!`)
       .setTimestamp()
       .setColor('#2F3136')
-  );
+      ]
+  });
 });
 client.on('guildDelete', (guild) => {
-  client.channels.cache.get(logsChannel).send(
+  client.channels.cache.get(logsChannel).send({
+    embeds: [
     new MessageEmbed()
       .setTitle('Server Removed!')
       .setThumbnail(guild.iconURL({ dynamic: true }))
@@ -81,7 +84,8 @@ client.on('guildDelete', (guild) => {
       .setFooter(`Currently In ${client.guilds.cache.size} Servers!`)
       .setColor('#2F3136')
       .setTimestamp()
-  );
+      ]
+  });
 });
 const ap = AutoPoster(process.env.TOPGG_TOKEN, client);
 ap.on('posted', () => {
