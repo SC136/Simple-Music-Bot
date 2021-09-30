@@ -1,4 +1,4 @@
-const client = require(`./v3`);
+const client = require(`./index`);
 module.exports = (message) => {
   if (!message.member.voice.channelId)
     return client.error(message, `You Need To Join A VC!`);

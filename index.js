@@ -64,18 +64,9 @@ client.player
       ],
     })
   )
-  .on("queueEnd", (queue, track) =>
+  .on("queueEnd", (queue) =>
     queue.metadata.channel.send({
-      embeds: [
-        client.embed("```The Queue Has Ended!```").setFooter(
-          `Requested By ${track.requestedBy.tag}`,
-          track.requestedBy.avatarURL({
-            format: "png",
-            size: 4096,
-            dynamic: true,
-          })
-        ),
-      ],
+      embeds: [client.embed("```The Queue Has Ended!```")],
     })
   )
   .on("botDisconect", (queue) =>
@@ -114,6 +105,12 @@ client.on("messageCreate", async (message) => {
     !message.content.startsWith(client.preifx) ||
     !message.guild ||
     message.author.bot
+  )
+    return;
+  if (
+    !message.guild.me
+      .permissionsIn(message.channel)
+      .has(Permissions.FLAGS.SEND_MESSAGES)
   )
     return;
   const [name, ...args] = message.content.slice(1).split(/\s+/g);
@@ -205,5 +202,10 @@ const ap = AutoPoster(process.env.TOPGG_TOKEN, client);
 ap.on("posted", () => {
   console.log("Posted Stats to Top.gg");
 });
+
+process.on("uncaughtException", function (err) {
+  console.log("caught exception: " + err);
+});
+
 client.login(process.env.DISCORD_BOT_TOKEN);
 // client.login('NzgwNjgyMjAzNzYyOTE3NDA3.X7yo9Q.B6UJ6MdOWMiwiS7G_zV1TIZmOV8') // for testing purposes...
