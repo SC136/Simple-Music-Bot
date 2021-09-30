@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Client, Collection, MessageEmbed, Intents } = require("discord.js");
+const { Client, Collection, MessageEmbed, Intents, Permissions } = require("discord.js");
 const { readdirSync } = require("fs");
 const AutoPoster = require("topgg-autoposter");
 const { Player } = require("discord-player");
