@@ -21,8 +21,8 @@ for (const file of files) {
   const command = require(`./v3commands/${file}`);
   client.commands.set(command.name, command);
 }
-client.embed = require("./embed");
-client.error = require("./error");
+client.embed = require("./Embed");
+client.error = require("./Error");
 client.check = require(`./check`);
 client.emoji = `<:SimpleMusicBotCircular:881970577873731654>`;
 const player = new Player(client, {
