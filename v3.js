@@ -88,10 +88,7 @@ client.once("ready", () => {
   console.log(
     `Bot Has Logged in And Is Playing Music! \nSimple Music Bot Is In ${
       client.guilds.cache.size
-    } Servers! \n${client.guilds.cache.reduce(
-      (a, g) => a + g.memberCount,
-      0
-    )} People Are Using Simple Music Bot! \nTotal Channels : ${
+    } Servers! \n${client.users.cache.size} People Are Using Simple Music Bot! \nTotal Channels : ${
       client.channels.cache.size
     }!`
   );
