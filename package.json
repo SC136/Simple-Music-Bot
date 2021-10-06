@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "node": "^16.6.1"
+    "node": "^16.6.1",
+    "prettier": "2.4.1"
   },
   "dependencies": {
     "@discordjs/opus": "^0.6.0",

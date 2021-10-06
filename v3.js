@@ -1,5 +1,11 @@
 require("dotenv").config();
-const { Client, Collection, MessageEmbed, Intents, Permissions } = require("discord.js");
+const {
+  Client,
+  Collection,
+  MessageEmbed,
+  Intents,
+  Permissions,
+} = require("discord.js");
 const { readdirSync } = require("fs");
 const AutoPoster = require("topgg-autoposter");
 const { Player } = require("discord-player");
@@ -26,6 +32,14 @@ client.error = require("./cerror");
 client.check = require(`./check`);
 client.emoji = `<:SimpleMusicBotCircular:881970577873731654>`;
 const player = new Player(client, {
+  ytdlOptions: {
+    requestOptions: {
+      headers: {
+        cookie:
+          "VISITOR_INFO1_LIVE=7BxrRmxxrWs; PREF=f4=4000000&tz=Asia.Calcutta; HSID=AHbZMMFC2wyTcLcMZ; SSID=ATXoUUt6mr3k-niyX; APISID=g1zkXtWBVWoVteW4/AbwcV6TGy-ss8jFCn; SAPISID=mR3nonaT6WIMKe-U/ASUrvSaofpi6eHtzq; __Secure-1PAPISID=mR3nonaT6WIMKe-U/ASUrvSaofpi6eHtzq; __Secure-3PAPISID=mR3nonaT6WIMKe-U/ASUrvSaofpi6eHtzq; LOGIN_INFO=AFmmF2swRAIgDxcaeAvpmTxlkLAH3D07_0cGzrVYO39h4B4me1LqSD0CIDrCzau7Qk-WuK5Wy0ubMFfmh9wVPYvjfDQOfkTON_wK:QUQ3MjNmd2lmVGs3NDRGMFhwcHgzSEgwbFpFbU4xTzZvOW5yZ3Q5N2ZseGRKQlkwbDhrbG9taWV5RXNfXzJpS2cydE1DLWU4T3Jud3ppQXZZemx5anhHcGxUb3dhUEpZaXh4XzNnc3BzSWVVVEFCb2JSMUlDdDQxSjhuNVY2NGlPQ1I4cWE4bV9ZejlDSDh2dEl1dVRidThzMWJzaVlieEdR; SID=BgiZz9udGAVg4-sgAmQnpPEvav-fET-u1rcV7x3xB6lZnngIVHpdd9nxEsFK5SdWLBMgFg.; __Secure-1PSID=BgiZz9udGAVg4-sgAmQnpPEvav-fET-u1rcV7x3xB6lZnngIsbZxPKYoh3BxAXftfgJY7w.; __Secure-3PSID=BgiZz9udGAVg4-sgAmQnpPEvav-fET-u1rcV7x3xB6lZnngILeDiFUucLoPiJSjQ9NX4pQ.; YSC=ndaWLGLezDs; SIDCC=AJi4QfGtWcFvY1TQGQp-7zk9Rm_HrGpeAgyXZ7ifXaXRCxAu7V5M-FpW_AZox8D5k4y9zxdbsBY; __Secure-3PSIDCC=AJi4QfG737-_BisWpsF7T_8lIt-Ml-mYZ0ssBzJIqr0-wAyFFdmTgV2f_usKR6xsF95euU4qcw",
+      },
+    },
+  },
   leaveOnEnd: false,
   leaveOnStop: false,
   leaveOnEmptyCooldown: 60000,
@@ -86,11 +100,7 @@ client.player
   );
 client.once("ready", () => {
   console.log(
-    `Bot Has Logged in And Is Playing Music! \nSimple Music Bot Is In ${
-      client.guilds.cache.size
-    } Servers! \n${client.users.cache.size} People Are Using Simple Music Bot! \nTotal Channels : ${
-      client.channels.cache.size
-    }!`
+    `Bot Has Logged in And Is Playing Music! \nSimple Music Bot Is In ${client.guilds.cache.size} Servers! \n${client.users.cache.size} People Are Using Simple Music Bot! \nTotal Channels : ${client.channels.cache.size}!`
   );
   client.user.setActivity(`Simplicity | .help | Simply Simple Music Bot!`, {
     type: "LISTENING",
