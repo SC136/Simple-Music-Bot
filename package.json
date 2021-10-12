@@ -1,6 +1,6 @@
 {
   "name": "simple-music-bot",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "Simply Simple Music Bot!",
   "main": "v3.js",
   "scripts": {

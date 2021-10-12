@@ -7,7 +7,7 @@ module.exports = {
   run: async (client, message) => {
     const embed = new MessageEmbed()
       .setTitle(`${client.emoji} Simple Music Bot Help Command`)
-      .setThumbnail(`${client.user.avatarURL({size: 4096})}`)
+      .setThumbnail(`${client.user.avatarURL({ size: 4096 })}`)
       .setDescription("```Simply Simple Music Bot!```")
       .addField(
         ".play",
@@ -18,10 +18,12 @@ module.exports = {
       .addField(".pause", "```Pauses The Music```", true)
       .addField(".resume", "```Resumes The Music```", true)
       .addField(".loop", "```Repeats The Music```", true)
+      .addField(".lyrics", "```Shows The Lyrics Of The Current Playing Song```")
       .addField(".queue", "```Shows You The Current Queue```")
       .addField(".stop", "```Simply Stops The Song```", true)
       //.addField('.join', '```Simply Joins The VC You Are In```', true)
       //.addField('.leave', '```Simply Leaves The VC```', true)
+      .addField(".searchlyrics", "```Search For Lyrics Of A Song```")
       .addField(".ping", "```Simply Shows You The Latency```", true)
       .addField(
         ".server",
