@@ -1,6 +1,6 @@
 {
   "name": "simple-music-bot",
-  "version": "3.0.0",
+  "version": "3.3.0",
   "description": "Simply Simple Music Bot!",
   "main": "v3.js",
   "scripts": {
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@discordjs/opus": "^0.6.0",
+    "axios": "^0.22.0",
     "discord-player": "^5.0.2",
     "discord.js": "^13.1.0",
     "dotenv": "^8.6.0",

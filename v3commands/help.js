@@ -7,7 +7,7 @@ module.exports = {
   run: async (client, message) => {
     const embed = new MessageEmbed()
       .setTitle(`${client.emoji} Simple Music Bot Help Command`)
-      .setThumbnail(`${client.user.displayAvatarURL()}`)
+      .setThumbnail(`${client.user.avatarURL({size: 4096})}`)
       .setDescription("```Simply Simple Music Bot!```")
       .addField(
         ".play",
