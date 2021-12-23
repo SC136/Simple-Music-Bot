@@ -12,6 +12,6 @@ module.exports = {
       )
       .setThumbnail(`${client.user.displayAvatarURL()}`)
       .setColor("#2F3136");
-    message.channel.send(embed);
+    message.channel.send(embed)
   },
 };
