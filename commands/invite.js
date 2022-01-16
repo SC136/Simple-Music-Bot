@@ -14,4 +14,4 @@ module.exports = {
       .setColor("#2F3136");
     message.channel.send(embed)
   },
-};
+}
