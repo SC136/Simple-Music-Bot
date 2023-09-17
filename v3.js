@@ -100,12 +100,12 @@ client.player
   );
 client.once("ready", () => {
   console.log(
-    `Bot Has Logged in And Is Playing Music! \nSimple Music Bot Is In ${client.guilds.cache.size} Servers! \n${client.users.cache.size} People Are Using Simple Music Bot! \nTotal Channels : ${client.channels.cache.size}!`
+    `Bot Has Logged In And Is Playing Music! \nSimple Music Bot Is In ${client.guilds.cache.size} Servers! \n${client.users.cache.size} People Are Using Simple Music Bot! \nTotal Channels : ${client.channels.cache.size}!`
   );
   client.user.setActivity(`Simplicity | .help | Simply Simple Music Bot!`, {
     type: "LISTENING",
   });
-  // client.user.setActivity(`Simplicity | Type .help | I Am In ${client.guilds.cache.size} Servers! & ${client.users.cache.size} People Are Using Me!`, { type: "LISTENING" });
+  // client.user.setActivity(`Simplicity | Type .help | I Am in ${client.guilds.cache.size} Servers! & ${client.users.cache.size} People Are Using Me!`, { type: "LISTENING" });
 });
 client.on("messageCreate", async (message) => {
   if (
